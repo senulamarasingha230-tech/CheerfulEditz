@@ -3,27 +3,28 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080909">
 
-<title>CHEERFUL — Turning Moments Into Emotions</title>
+<title>CHEERFUL — Creative Hub</title>
 
-<meta name="description" content="Cheerful — cinematic edits, creative ideas, editing resources and more.">
-<meta name="theme-color" content="#070707">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
 :root{
-    --bg:#070707;
-    --bg2:#0c0c0c;
-    --surface:rgba(255,255,255,.045);
-    --surface2:rgba(255,255,255,.07);
-    --text:#f5f5f5;
-    --muted:#858585;
-    --dim:#505050;
+    --bg:#080909;
+    --panel:#101111;
+    --panel2:#151616;
+    --text:#f5f5ef;
+    --muted:#8c8f8c;
     --line:rgba(255,255,255,.09);
     --accent:#dfff62;
-    --radius:28px;
+    --accent2:#bff43f;
+    --danger:#ff6b6b;
+    --radius:24px;
+    --nav:74px;
 }
 
 *{
@@ -43,15 +44,24 @@ body{
     overflow-x:hidden;
 }
 
-::selection{
-    background:var(--accent);
-    color:#000;
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.035;
+    z-index:999;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
 }
 
 button,
 input,
-textarea,
-select{
+textarea{
     font:inherit;
 }
 
@@ -59,159 +69,134 @@ button{
     cursor:pointer;
 }
 
-/* BACKGROUND */
-
-.background{
-    position:fixed;
-    inset:0;
-    z-index:-10;
-    overflow:hidden;
-    background:
-        radial-gradient(circle at 15% 15%,rgba(223,255,98,.055),transparent 30%),
-        radial-gradient(circle at 85% 80%,rgba(255,255,255,.035),transparent 30%),
-        var(--bg);
+::selection{
+    background:var(--accent);
+    color:#000;
 }
 
+/* BACKGROUND */
+
 .orb{
-    position:absolute;
-    width:520px;
-    height:520px;
+    position:fixed;
+    width:420px;
+    height:420px;
     border-radius:50%;
-    filter:blur(110px);
-    opacity:.12;
-    animation:float 18s ease-in-out infinite;
+    filter:blur(120px);
+    opacity:.07;
+    background:var(--accent);
+    pointer-events:none;
 }
 
 .orb.one{
-    background:var(--accent);
-    left:-270px;
-    top:-280px;
+    top:-180px;
+    right:-120px;
 }
 
 .orb.two{
-    background:#fff;
-    right:-320px;
-    bottom:-280px;
-    animation-delay:-8s;
+    bottom:-200px;
+    left:-160px;
 }
 
-@keyframes float{
-    0%,100%{transform:translate(0,0) scale(1)}
-    50%{transform:translate(70px,45px) scale(1.12)}
-}
-
-/* GRAIN */
-
-.grain{
-    position:fixed;
-    inset:0;
-    z-index:1000;
-    pointer-events:none;
-    opacity:.04;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* NAV */
+/* NAVIGATION */
 
 nav{
+    height:var(--nav);
     position:fixed;
     top:0;
     left:0;
     right:0;
-    z-index:500;
-    height:76px;
-    padding:0 5vw;
+    z-index:100;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    border-bottom:1px solid rgba(255,255,255,.05);
-    background:rgba(7,7,7,.56);
-    backdrop-filter:blur(22px);
-    -webkit-backdrop-filter:blur(22px);
+    padding:0 5vw;
+    background:rgba(8,9,9,.72);
+    backdrop-filter:blur(24px);
+    border-bottom:1px solid var(--line);
 }
 
 .logo{
-    color:#fff;
-    text-decoration:none;
     font-family:"Space Grotesk",sans-serif;
     font-weight:700;
-    font-size:20px;
-    letter-spacing:-.07em;
+    letter-spacing:-.08em;
+    font-size:1.25rem;
 }
 
 .logo span{
     color:var(--accent);
 }
 
-.nav-links{
+.navlinks{
     display:flex;
+    gap:26px;
     align-items:center;
-    gap:30px;
 }
 
-.nav-links a{
-    color:#858585;
-    text-decoration:none;
-    font-size:13px;
+.navlinks a{
+    color:#aaa;
+    font-size:.82rem;
     transition:.25s;
 }
 
-.nav-links a:hover{
-    color:#fff;
+.navlinks a:hover{
+    color:white;
 }
 
-.nav-pill{
+.nav-pro{
+    color:#000 !important;
     background:var(--accent);
-    color:#000!important;
-    padding:11px 17px;
-    border-radius:100px;
+    padding:9px 14px;
+    border-radius:999px;
     font-weight:700;
 }
 
 .menu{
     display:none;
-    border:0;
     background:none;
-    color:#fff;
-    font-size:24px;
+    color:white;
+    border:0;
+    font-size:1.5rem;
 }
 
 /* HERO */
 
 .hero{
     min-height:100vh;
-    padding:150px 6vw 100px;
+    padding:170px 7vw 100px;
     display:flex;
     flex-direction:column;
     justify-content:center;
     position:relative;
 }
 
-.eyebrow{
-    display:flex;
+.kicker{
+    display:inline-flex;
+    width:max-content;
     align-items:center;
-    gap:12px;
-    color:var(--accent);
-    font-size:10px;
-    text-transform:uppercase;
-    letter-spacing:.2em;
-    font-weight:700;
-    margin-bottom:30px;
+    gap:9px;
+    border:1px solid var(--line);
+    padding:8px 13px;
+    border-radius:999px;
+    color:#b8bab7;
+    font-size:.78rem;
+    margin-bottom:25px;
+    background:rgba(255,255,255,.025);
 }
 
-.eyebrow::before{
-    content:"";
-    width:32px;
-    height:1px;
+.kicker i{
+    width:7px;
+    height:7px;
     background:var(--accent);
+    border-radius:50%;
+    box-shadow:0 0 15px var(--accent);
 }
 
 .hero h1{
     font-family:"Space Grotesk",sans-serif;
-    font-size:clamp(82px,17vw,245px);
-    line-height:.76;
-    letter-spacing:-.1em;
-    font-weight:700;
+    font-size:clamp(5rem,15vw,13rem);
+    line-height:.78;
+    letter-spacing:-.095em;
+    max-width:1200px;
 }
 
 .hero h1 span{
@@ -221,620 +206,606 @@ nav{
 .hero-bottom{
     display:flex;
     justify-content:space-between;
-    align-items:flex-end;
-    gap:40px;
-    margin-top:70px;
+    align-items:end;
+    margin-top:65px;
+    max-width:1100px;
 }
 
-.hero-copy{
-    font-size:clamp(21px,2.6vw,34px);
-    line-height:1.12;
-    letter-spacing:-.04em;
-    max-width:650px;
-}
-
-.hero-copy strong{
-    color:#fff;
-}
-
-.hero-note{
-    max-width:270px;
-    color:#666;
-    font-size:12px;
+.hero-bottom p{
+    color:#999;
+    max-width:450px;
     line-height:1.7;
 }
 
-.scroll-hint{
-    position:absolute;
-    left:6vw;
-    bottom:35px;
+.hero-buttons{
     display:flex;
-    align-items:center;
-    gap:12px;
-    color:#555;
-    font-size:9px;
-    text-transform:uppercase;
-    letter-spacing:.18em;
+    gap:10px;
+    flex-wrap:wrap;
 }
 
-.scroll-line{
-    width:45px;
-    height:1px;
-    background:#444;
+.btn{
+    border:1px solid var(--line);
+    background:var(--panel);
+    color:white;
+    padding:13px 18px;
+    border-radius:999px;
+    transition:.25s;
+    font-weight:600;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    border-color:rgba(223,255,98,.5);
+}
+
+.btn.primary{
+    background:var(--accent);
+    color:#000;
+    border-color:var(--accent);
 }
 
 /* MARQUEE */
 
 .marquee{
+    overflow:hidden;
     border-top:1px solid var(--line);
     border-bottom:1px solid var(--line);
-    overflow:hidden;
+    padding:17px 0;
     white-space:nowrap;
-    padding:23px 0;
 }
 
 .marquee-track{
-    display:inline-flex;
-    gap:28px;
-    animation:marquee 26s linear infinite;
+    display:inline-block;
+    animation:marquee 24s linear infinite;
+    font-family:"Space Grotesk";
+    font-size:.78rem;
+    letter-spacing:.15em;
+    color:#777;
 }
 
-.marquee span{
-    font-family:"Space Grotesk",sans-serif;
-    font-size:clamp(34px,5vw,72px);
-    letter-spacing:-.06em;
-    font-weight:600;
-}
-
-.marquee .star{
+.marquee-track span{
     color:var(--accent);
+    margin:0 25px;
 }
 
 @keyframes marquee{
-    to{transform:translateX(-50%)}
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-50%);
+    }
 }
 
 /* SECTIONS */
 
 section{
-    padding:140px 6vw;
+    padding:120px 7vw;
 }
 
 .section-label{
     color:var(--accent);
-    font-size:10px;
+    font-size:.72rem;
+    letter-spacing:.15em;
     text-transform:uppercase;
-    letter-spacing:.2em;
-    font-weight:700;
-    margin-bottom:30px;
+    margin-bottom:15px;
 }
 
 .section-title{
-    font-family:"Space Grotesk",sans-serif;
-    font-size:clamp(50px,8vw,120px);
-    line-height:.88;
-    letter-spacing:-.08em;
+    font-family:"Space Grotesk";
+    font-size:clamp(2.5rem,6vw,6rem);
+    line-height:.95;
+    letter-spacing:-.07em;
+    max-width:850px;
 }
 
-/* ABOUT */
+.section-desc{
+    color:var(--muted);
+    max-width:600px;
+    line-height:1.7;
+    margin-top:22px;
+}
 
-.about-grid{
-    margin-top:75px;
+/* HUB */
+
+.hub{
+    background:#0b0c0c;
+}
+
+.hub-grid{
+    margin-top:50px;
     display:grid;
-    grid-template-columns:1.1fr .9fr;
-    gap:90px;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
 }
 
-.about-main{
-    font-size:clamp(25px,3.2vw,46px);
-    line-height:1.08;
-    letter-spacing:-.045em;
-}
-
-.about-main span{
-    color:#555;
-}
-
-.about-side{
-    color:#777;
-    border-left:1px solid var(--line);
-    padding-left:35px;
-    line-height:1.8;
-    max-width:470px;
-}
-
-.about-side strong{
-    color:#fff;
-}
-
-/* FEATURE CARDS */
-
-.feature-grid{
-    margin-top:70px;
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:15px;
-}
-
-.feature-card{
+.card{
     position:relative;
-    min-height:330px;
-    padding:32px;
+    min-height:220px;
+    padding:25px;
+    background:linear-gradient(145deg,#141515,#0d0e0e);
     border:1px solid var(--line);
     border-radius:var(--radius);
-    background:
-        linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.018));
     overflow:hidden;
-    transition:
-        transform .4s cubic-bezier(.2,.8,.2,1),
-        border-color .3s;
+    transition:.35s;
 }
 
-.feature-card:hover{
-    border-color:rgba(223,255,98,.28);
+.card:hover{
     transform:translateY(-7px);
+    border-color:rgba(223,255,98,.35);
 }
 
-.feature-number{
-    color:#555;
-    font-size:11px;
-}
-
-.feature-icon{
-    font-size:32px;
-    margin-top:45px;
-}
-
-.feature-card h3{
-    font-family:"Space Grotesk",sans-serif;
-    font-size:clamp(30px,4vw,50px);
-    letter-spacing:-.07em;
-    margin-top:20px;
-}
-
-.feature-card p{
-    color:#777;
-    font-size:13px;
-    line-height:1.65;
-    max-width:420px;
-    margin-top:12px;
-}
-
-.feature-arrow{
+.card:after{
+    content:"";
     position:absolute;
-    right:28px;
-    bottom:27px;
-    color:#555;
-    font-size:22px;
-    transition:.3s;
+    width:130px;
+    height:130px;
+    right:-60px;
+    bottom:-60px;
+    border-radius:50%;
+    background:var(--accent);
+    filter:blur(65px);
+    opacity:.06;
 }
 
-.feature-card:hover .feature-arrow{
-    color:var(--accent);
-    transform:translate(4px,-4px);
+.card-icon{
+    font-size:1.7rem;
+    margin-bottom:40px;
 }
 
-/* STATEMENT */
-
-.statement{
-    min-height:80vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
+.card h3{
+    font-family:"Space Grotesk";
+    font-size:1.3rem;
+    margin-bottom:8px;
 }
 
-.statement h2{
-    font-family:"Space Grotesk",sans-serif;
-    font-size:clamp(70px,14vw,210px);
-    line-height:.76;
-    letter-spacing:-.1em;
+.card p{
+    color:#818481;
+    font-size:.88rem;
+    line-height:1.5;
 }
 
-.statement h2 span{
-    display:block;
+.card-arrow{
+    position:absolute;
+    right:22px;
+    top:22px;
+    color:#666;
 }
 
-.statement .accent{
-    color:var(--accent);
-}
+/* COMMUNITY */
 
-/* PROCESS */
-
-.process{
-    border-top:1px solid var(--line);
-}
-
-.process-list{
-    margin-top:65px;
-}
-
-.process-row{
+.community-grid{
     display:grid;
-    grid-template-columns:70px 1fr 1fr;
-    gap:30px;
-    align-items:center;
-    padding:38px 0;
-    border-bottom:1px solid var(--line);
+    grid-template-columns:1.35fr .65fr;
+    gap:20px;
+    margin-top:50px;
 }
 
-.process-num{
-    color:#555;
-    font-size:11px;
-}
-
-.process-name{
-    font-family:"Space Grotesk",sans-serif;
-    font-size:clamp(30px,4vw,55px);
-    letter-spacing:-.06em;
-}
-
-.process-description{
-    color:#777;
-    font-size:13px;
-    line-height:1.7;
-    max-width:420px;
-}
-
-/* CLAIM SECTION */
-
-.claim-section{
-    padding-top:100px;
-}
-
-.claim-container{
-    margin-top:70px;
+.feed,
+.side-panel{
     border:1px solid var(--line);
-    border-radius:35px;
-    padding:clamp(30px,6vw,75px);
-    background:
-        radial-gradient(circle at 90% 0%,rgba(223,255,98,.08),transparent 32%),
-        linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
+    border-radius:var(--radius);
+    background:var(--panel);
+    padding:24px;
 }
 
-.claim-intro{
-    max-width:720px;
-}
-
-.claim-intro h3{
-    font-family:"Space Grotesk",sans-serif;
-    font-size:clamp(42px,6vw,80px);
-    line-height:.9;
-    letter-spacing:-.075em;
-}
-
-.claim-intro h3 span{
-    color:var(--accent);
-}
-
-.claim-intro p{
-    color:#777;
-    line-height:1.7;
-    max-width:600px;
-    margin-top:25px;
-}
-
-.claim-layout{
-    margin-top:60px;
-    display:grid;
-    grid-template-columns:1.4fr .6fr;
-    gap:60px;
-}
-
-.form{
+.feed-head{
     display:flex;
-    flex-direction:column;
-    gap:17px;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.feed-head h3{
+    font-family:"Space Grotesk";
+    font-size:1.5rem;
+}
+
+.badge{
+    padding:6px 10px;
+    border-radius:999px;
+    background:rgba(223,255,98,.1);
+    color:var(--accent);
+    font-size:.7rem;
+    border:1px solid rgba(223,255,98,.2);
+}
+
+.post{
+    border-top:1px solid var(--line);
+    padding:22px 0;
+}
+
+.post:first-child{
+    border-top:0;
+}
+
+.post-meta{
+    color:#6f726f;
+    font-size:.72rem;
+    margin-bottom:9px;
+}
+
+.post h4{
+    font-size:1.1rem;
+    margin-bottom:7px;
+}
+
+.post p{
+    color:#858885;
+    line-height:1.6;
+    font-size:.88rem;
+}
+
+.post-actions{
+    display:flex;
+    gap:8px;
+    margin-top:14px;
+}
+
+.small-btn{
+    background:#171818;
+    color:#bbb;
+    border:1px solid var(--line);
+    padding:7px 11px;
+    border-radius:999px;
+    font-size:.72rem;
+}
+
+.small-btn:hover{
+    color:white;
+}
+
+/* POLL */
+
+.poll-option{
+    width:100%;
+    text-align:left;
+    margin-top:10px;
+    padding:13px;
+    border:1px solid var(--line);
+    background:#111212;
+    color:#ddd;
+    border-radius:14px;
+    position:relative;
+    overflow:hidden;
+}
+
+.poll-option span{
+    position:relative;
+    z-index:2;
+}
+
+.poll-bar{
+    position:absolute;
+    inset:0 auto 0 0;
+    width:0%;
+    background:rgba(223,255,98,.09);
+    transition:.4s;
+}
+
+/* FORM */
+
+.form-section{
+    max-width:850px;
+    margin:auto;
+}
+
+.form-box{
+    margin-top:45px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:28px;
+    padding:30px;
 }
 
 .field{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
+    margin-bottom:15px;
 }
 
 .field label{
-    color:#777;
-    font-size:10px;
-    text-transform:uppercase;
-    letter-spacing:.15em;
+    display:block;
+    font-size:.74rem;
+    color:#929592;
+    margin-bottom:7px;
 }
 
 .field input,
-.field textarea,
-.field select{
+.field textarea{
     width:100%;
+    padding:13px 14px;
     border:1px solid var(--line);
-    outline:none;
-    color:#fff;
-    background:rgba(255,255,255,.035);
     border-radius:14px;
-    padding:15px 16px;
-    transition:.25s;
-}
-
-.field input:focus,
-.field textarea:focus,
-.field select:focus{
-    border-color:rgba(223,255,98,.55);
-    background:rgba(255,255,255,.055);
+    background:#0d0e0e;
+    color:white;
+    outline:none;
 }
 
 .field textarea{
-    min-height:130px;
+    min-height:120px;
     resize:vertical;
 }
 
-.field select{
-    appearance:none;
+.field input:focus,
+.field textarea:focus{
+    border-color:rgba(223,255,98,.5);
 }
 
-.check{
+.checkbox{
     display:flex;
-    align-items:flex-start;
     gap:10px;
-    color:#777;
-    font-size:11px;
+    align-items:flex-start;
+    color:#888;
+    font-size:.78rem;
     line-height:1.5;
-    margin-top:4px;
+    margin:15px 0 22px;
 }
 
-.check input{
+.checkbox input{
     margin-top:3px;
     accent-color:var(--accent);
 }
 
-.primary-btn{
-    border:0;
-    background:var(--accent);
-    color:#000;
-    border-radius:100px;
-    padding:16px 23px;
-    font-size:12px;
-    font-weight:700;
-    width:max-content;
-    transition:.3s;
+/* IDEAS */
+
+.idea-area{
+    margin-top:50px;
 }
 
-.primary-btn:hover{
-    transform:translateY(-3px);
-    box-shadow:0 12px 35px rgba(223,255,98,.14);
+/* PRO */
+
+.pro-section{
+    background:#0b0c0c;
 }
 
-.claim-info{
-    border-left:1px solid var(--line);
-    padding-left:35px;
-}
-
-.claim-info h4{
-    font-family:"Space Grotesk",sans-serif;
-    font-size:24px;
-    letter-spacing:-.04em;
-}
-
-.claim-info p{
-    color:#666;
-    font-size:12px;
-    line-height:1.7;
-    margin-top:15px;
-}
-
-.claim-steps{
-    margin-top:35px;
-}
-
-.claim-step{
-    display:flex;
-    gap:15px;
-    padding:15px 0;
-    border-bottom:1px solid var(--line);
-}
-
-.claim-step b{
-    color:var(--accent);
-    font-size:10px;
-}
-
-.claim-step span{
-    color:#777;
-    font-size:11px;
-}
-
-/* CLAIM RESULT */
-
-.claim-result{
-    display:none;
-    margin-top:45px;
-    padding:30px;
+.pro-box{
+    margin-top:55px;
     border:1px solid rgba(223,255,98,.2);
-    border-radius:22px;
-    background:rgba(223,255,98,.035);
+    background:
+        radial-gradient(circle at 85% 15%,rgba(223,255,98,.08),transparent 30%),
+        linear-gradient(145deg,#141515,#0d0e0e);
+    border-radius:32px;
+    padding:50px;
+    position:relative;
+    overflow:hidden;
 }
 
-.claim-result.show{
+.pro-crown{
+    font-size:2.3rem;
+    margin-bottom:20px;
+}
+
+.pro-box h3{
+    font-family:"Space Grotesk";
+    font-size:clamp(2rem,5vw,4.5rem);
+    letter-spacing:-.06em;
+}
+
+.pro-box > p{
+    color:#8d908d;
+    max-width:600px;
+    line-height:1.7;
+    margin:15px 0 30px;
+}
+
+.perks{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin:30px 0;
+}
+
+.perk{
+    padding:18px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:rgba(255,255,255,.02);
+}
+
+.perk b{
     display:block;
-    animation:appear .5s ease;
+    margin-bottom:5px;
 }
 
-@keyframes appear{
-    from{
-        opacity:0;
-        transform:translateY(15px);
-    }
-    to{
-        opacity:1;
-        transform:none;
-    }
+.perk span{
+    color:#777;
+    font-size:.8rem;
+    line-height:1.5;
 }
 
-.result-label{
+/* RESULT */
+
+.result{
+    display:none;
+    margin-top:20px;
+    padding:25px;
+    border:1px solid rgba(223,255,98,.3);
+    background:rgba(223,255,98,.04);
+    border-radius:22px;
+}
+
+.result.show{
+    display:block;
+}
+
+.result-id{
+    font-family:"Space Grotesk";
     color:var(--accent);
-    font-size:10px;
-    text-transform:uppercase;
-    letter-spacing:.15em;
-    font-weight:700;
-}
-
-.claim-id{
-    font-family:"Space Grotesk",sans-serif;
-    font-size:clamp(30px,5vw,55px);
-    letter-spacing:.03em;
-    margin-top:10px;
+    font-size:2rem;
+    letter-spacing:.08em;
+    margin:10px 0 18px;
     word-break:break-all;
 }
 
-.result-note{
-    color:#777;
-    font-size:12px;
-    line-height:1.7;
-    margin-top:10px;
+.result p{
+    color:#888;
+    font-size:.82rem;
+    line-height:1.6;
 }
 
-.result-buttons{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:25px;
-}
+/* CLAIM */
 
-.secondary-btn{
-    border:1px solid var(--line);
-    background:rgba(255,255,255,.045);
-    color:#fff;
-    border-radius:100px;
-    padding:13px 18px;
-    font-size:11px;
-    text-decoration:none;
-    transition:.25s;
-}
-
-.secondary-btn:hover{
-    border-color:rgba(223,255,98,.3);
+.claim-note{
+    padding:17px;
+    border:1px solid rgba(255,255,255,.07);
+    background:rgba(255,255,255,.025);
+    border-radius:16px;
+    color:#888;
+    font-size:.8rem;
+    line-height:1.6;
+    margin-bottom:20px;
 }
 
 /* HISTORY */
 
 .history{
-    margin-top:60px;
-    border-top:1px solid var(--line);
-    padding-top:40px;
+    margin-top:30px;
 }
 
-.history-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
-}
-
-.history-title{
-    font-family:"Space Grotesk",sans-serif;
-    font-size:30px;
-    letter-spacing:-.06em;
-}
-
-.clear-history{
-    border:0;
-    background:none;
-    color:#555;
-    font-size:10px;
-    text-transform:uppercase;
-    letter-spacing:.1em;
-}
-
-.clear-history:hover{
-    color:#fff;
-}
-
-.history-list{
-    margin-top:20px;
+.history h3{
+    font-family:"Space Grotesk";
+    margin-bottom:15px;
 }
 
 .history-item{
     display:flex;
     justify-content:space-between;
-    align-items:center;
-    gap:20px;
-    padding:22px 0;
-    border-bottom:1px solid var(--line);
+    gap:15px;
+    padding:15px;
+    border:1px solid var(--line);
+    background:#0d0e0e;
+    border-radius:15px;
+    margin-bottom:8px;
 }
 
 .history-id{
-    font-family:"Space Grotesk",sans-serif;
-    font-size:17px;
-}
-
-.history-date{
-    color:#555;
-    font-size:10px;
-    margin-top:5px;
-}
-
-.history-status{
     color:var(--accent);
-    font-size:9px;
-    text-transform:uppercase;
-    letter-spacing:.12em;
+    font-family:"Space Grotesk";
+    font-size:.8rem;
 }
 
-.empty-history{
-    color:#555;
-    font-size:12px;
-    padding:25px 0;
+.history-type{
+    color:#777;
+    font-size:.72rem;
 }
 
-/* EMAIL */
+/* JOURNAL */
 
-.email-area{
-    margin-top:55px;
-    padding-top:35px;
-    border-top:1px solid var(--line);
+.journal-grid{
+    margin-top:45px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
 }
 
-.email-area p{
-    color:#666;
-    font-size:12px;
-    line-height:1.7;
+.journal-card{
+    padding:28px;
+    min-height:230px;
+    border:1px solid var(--line);
+    background:var(--panel);
+    border-radius:22px;
 }
 
-.email-link{
-    display:inline-block;
-    margin-top:13px;
-    color:#fff;
-    text-decoration:none;
-    font-family:"Space Grotesk",sans-serif;
-    font-size:20px;
-    letter-spacing:-.03em;
-}
-
-.email-link:hover{
+.journal-card small{
     color:var(--accent);
+}
+
+.journal-card h3{
+    font-family:"Space Grotesk";
+    margin:25px 0 10px;
+}
+
+.journal-card p{
+    color:#777;
+    line-height:1.6;
+    font-size:.85rem;
+}
+
+/* SEARCH */
+
+.search-wrap{
+    max-width:650px;
+    margin:35px auto 0;
+    position:relative;
+}
+
+.search-wrap input{
+    width:100%;
+    padding:17px 20px;
+    background:#111212;
+    border:1px solid var(--line);
+    border-radius:999px;
+    color:white;
+    outline:none;
+}
+
+.search-results{
+    max-width:650px;
+    margin:15px auto;
+}
+
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.72);
+    backdrop-filter:blur(14px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:500;
+}
+
+.modal.open{
+    display:flex;
+}
+
+.modal-box{
+    width:min(650px,100%);
+    max-height:90vh;
+    overflow:auto;
+    background:#111212;
+    border:1px solid var(--line);
+    border-radius:28px;
+    padding:30px;
+    position:relative;
+}
+
+.close{
+    position:absolute;
+    right:20px;
+    top:18px;
+    border:0;
+    background:#1b1c1c;
+    color:#aaa;
+    width:36px;
+    height:36px;
+    border-radius:50%;
 }
 
 /* FOOTER */
 
 footer{
     border-top:1px solid var(--line);
-    padding:30px 6vw;
+    padding:45px 7vw;
     display:flex;
     justify-content:space-between;
     gap:20px;
-    color:#555;
-    font-size:10px;
+    color:#666;
+    font-size:.75rem;
 }
 
 footer strong{
-    color:#999;
+    color:white;
 }
 
 /* REVEAL */
 
 .reveal{
     opacity:0;
-    transform:translateY(30px);
-    transition:
-        opacity .8s ease,
-        transform .8s cubic-bezier(.2,.8,.2,1);
+    transform:translateY(25px);
+    transition:.8s ease;
 }
 
 .reveal.visible{
@@ -842,150 +813,82 @@ footer strong{
     transform:none;
 }
 
-/* TOAST */
+/* RESPONSIVE */
 
-.toast{
-    position:fixed;
-    left:50%;
-    bottom:30px;
-    transform:translate(-50%,20px);
-    opacity:0;
-    pointer-events:none;
-    z-index:2000;
-    background:#fff;
-    color:#000;
-    padding:13px 19px;
-    border-radius:100px;
-    font-size:11px;
-    font-weight:700;
-    transition:.3s;
-}
+@media(max-width:900px){
 
-.toast.show{
-    opacity:1;
-    transform:translate(-50%,0);
-}
+    .navlinks{
+        position:fixed;
+        top:var(--nav);
+        left:0;
+        right:0;
+        background:#0b0c0c;
+        border-bottom:1px solid var(--line);
+        padding:20px;
+        display:none;
+        flex-direction:column;
+        align-items:flex-start;
+    }
 
-/* MOBILE */
-
-@media(max-width:850px){
-
-    nav{
-        height:68px;
+    .navlinks.open{
+        display:flex;
     }
 
     .menu{
         display:block;
     }
 
-    .nav-links{
-        position:fixed;
-        top:78px;
-        left:15px;
-        right:15px;
-        padding:18px;
-        border:1px solid var(--line);
-        border-radius:22px;
-        background:rgba(9,9,9,.95);
-        backdrop-filter:blur(20px);
-        flex-direction:column;
-        align-items:stretch;
-        gap:4px;
-        opacity:0;
-        pointer-events:none;
-        transform:translateY(-15px);
-        transition:.3s;
+    .hub-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .nav-links.open{
-        opacity:1;
-        pointer-events:auto;
-        transform:none;
+    .community-grid{
+        grid-template-columns:1fr;
     }
 
-    .nav-links a{
-        padding:14px;
+    .perks{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .nav-pill{
-        text-align:center;
-    }
-
-    .hero{
-        padding:135px 5vw 90px;
-    }
-
-    .hero h1{
-        font-size:24vw;
+    .journal-grid{
+        grid-template-columns:1fr;
     }
 
     .hero-bottom{
-        flex-direction:column;
         align-items:flex-start;
-        margin-top:50px;
+        flex-direction:column;
+        gap:30px;
     }
+}
 
-    .hero-copy{
-        font-size:24px;
-    }
-
-    .scroll-hint{
-        display:none;
-    }
+@media(max-width:600px){
 
     section{
-        padding:95px 5vw;
+        padding:80px 5vw;
     }
 
-    .about-grid{
-        grid-template-columns:1fr;
-        gap:45px;
-        margin-top:50px;
+    .hero{
+        padding:145px 5vw 80px;
     }
 
-    .about-side{
-        border-left:0;
-        border-top:1px solid var(--line);
-        padding-left:0;
-        padding-top:30px;
+    .hero h1{
+        font-size:25vw;
     }
 
-    .feature-grid{
+    .hub-grid{
         grid-template-columns:1fr;
     }
 
-    .statement{
-        min-height:60vh;
-    }
-
-    .statement h2{
-        font-size:22vw;
-    }
-
-    .process-row{
-        grid-template-columns:40px 1fr;
-        gap:12px;
-    }
-
-    .process-description{
-        grid-column:2;
-    }
-
-    .claim-layout{
+    .perks{
         grid-template-columns:1fr;
-        gap:45px;
     }
 
-    .claim-info{
-        border-left:0;
-        border-top:1px solid var(--line);
-        padding-left:0;
-        padding-top:35px;
+    .pro-box{
+        padding:28px;
     }
 
-    .history-item{
-        align-items:flex-start;
-        flex-direction:column;
+    .form-box{
+        padding:20px;
     }
 
     footer{
@@ -993,22 +896,14 @@ footer strong{
     }
 }
 
-/* REDUCED MOTION */
-
 @media(prefers-reduced-motion:reduce){
 
     *,
-    *::before,
-    *::after{
-        animation-duration:.01ms!important;
-        animation-iteration-count:1!important;
-        scroll-behavior:auto!important;
-        transition-duration:.01ms!important;
-    }
-
-    .reveal{
-        opacity:1;
-        transform:none;
+    *:before,
+    *:after{
+        animation:none !important;
+        transition:none !important;
+        scroll-behavior:auto !important;
     }
 }
 </style>
@@ -1016,86 +911,82 @@ footer strong{
 
 <body>
 
-<div class="background">
-    <div class="orb one"></div>
-    <div class="orb two"></div>
-</div>
+<div class="orb one"></div>
+<div class="orb two"></div>
 
-<div class="grain"></div>
+<!-- NAVIGATION -->
 
-<div class="toast" id="toast"></div>
-
-
-<!-- NAV -->
 <nav>
 
-    <a href="#top" class="logo">
-        CHEER<span>FUL.</span>
+    <a href="#home" class="logo">
+        CHEER<span>FUL</span>
     </a>
 
-    <div class="nav-links" id="navLinks">
+    <div class="navlinks" id="navLinks">
 
-        <a href="#about">About</a>
-        <a href="#features">Explore</a>
-        <a href="#process">Process</a>
-        <a href="#claims">Content Claim</a>
+        <a href="#hub">Hub</a>
 
-        <a
-            href="#"
-            id="youtubeButton"
-            class="nav-pill"
-            style="display:none;"
-            target="_blank"
-            rel="noopener"
-        >
-            YouTube ↗
+        <a href="#community">
+            Community
+        </a>
+
+        <a href="#pro" class="nav-pro">
+            👑 PRO
+        </a>
+
+        <a href="#claims">
+            Claims
+        </a>
+
+        <a href="#journal">
+            Journal
         </a>
 
     </div>
 
-    <button class="menu" id="menuButton" aria-label="Open navigation">
+    <button class="menu" id="menuBtn">
         ☰
     </button>
 
 </nav>
 
 
-<main id="top">
-
 <!-- HERO -->
 
-<section class="hero">
+<header class="hero reveal" id="home">
 
-    <div class="eyebrow reveal">
-        Independent creative channel
+    <div class="kicker">
+        <i></i>
+        THE CHEERFUL CREATIVE HUB
     </div>
 
-    <h1 class="reveal">
-        CHEER<span>FUL</span>
+    <h1>
+        CHEER<br>
+        <span>FUL.</span>
     </h1>
 
-    <div class="hero-bottom reveal">
+    <div class="hero-bottom">
 
-        <div class="hero-copy">
-            <strong>Turning moments into emotions.</strong><br>
-            Edits, ideas, resources and creative things
-            made to make you feel something.
-        </div>
+        <p>
+            A creative space built around edits, ideas, community and the
+            people who have been here from the beginning.
+        </p>
 
-        <div class="hero-note">
-            Cheerful isn't just about making an edit
-            look good. It's about finding the feeling
-            inside a moment — and bringing it to life.
+        <div class="hero-buttons">
+
+            <a class="btn primary" href="#hub">
+                Explore Hub →
+            </a>
+
+            <a class="btn" href="#community">
+                Join Community
+            </a>
+
         </div>
 
     </div>
 
-    <div class="scroll-hint">
-        <span class="scroll-line"></span>
-        Explore Cheerful
-    </div>
-
-</section>
+</header>
 
 
 <!-- MARQUEE -->
@@ -1104,326 +995,427 @@ footer strong{
 
     <div class="marquee-track">
 
-        <span>EMOTION</span>
-        <span class="star">✦</span>
+        EDITS <span>✦</span>
+        COMMUNITY <span>✦</span>
+        IDEAS <span>✦</span>
+        PRO <span>✦</span>
+        CREATIVITY <span>✦</span>
 
-        <span>CREATIVITY</span>
-        <span class="star">✦</span>
-
-        <span>ENERGY</span>
-        <span class="star">✦</span>
-
-        <span>CHEERFUL</span>
-        <span class="star">✦</span>
-
-        <span>EMOTION</span>
-        <span class="star">✦</span>
-
-        <span>CREATIVITY</span>
-        <span class="star">✦</span>
-
-        <span>ENERGY</span>
-        <span class="star">✦</span>
-
-        <span>CHEERFUL</span>
-        <span class="star">✦</span>
+        EDITS <span>✦</span>
+        COMMUNITY <span>✦</span>
+        IDEAS <span>✦</span>
+        PRO <span>✦</span>
+        CREATIVITY <span>✦</span>
 
     </div>
 
 </div>
 
 
-<!-- ABOUT -->
+<!-- HUB -->
 
-<section id="about">
+<section class="hub reveal" id="hub">
 
-    <div class="section-label reveal">
-        01 — About
+    <div class="section-label">
+        01 / Cheerful Hub
     </div>
 
-    <h2 class="section-title reveal">
-        MORE THAN<br>
-        AN EDIT.
+    <h2 class="section-title">
+        Everything Cheerful.<br>
+        In one place.
     </h2>
 
-    <div class="about-grid">
+    <p class="section-desc">
+        Don't just watch Cheerful. Take part in it.
+    </p>
 
-        <div class="about-main reveal">
-            We take moments people might scroll past
-            and turn them into something
-            <span>worth stopping for.</span>
-        </div>
 
-        <div class="about-side reveal">
+    <div class="hub-grid">
 
-            Cheerful is an independent creative channel
-            built around cinematic editing, emotion,
-            entertainment and experimentation.
+        <a class="card" href="#edit">
 
-            <br><br>
-
-            Sometimes that means an edit.
-
-            Sometimes it's an idea.
-
-            Sometimes it's a resource.
-
-            <br><br>
-
-            Whatever we're making, the goal stays the same:
-
-            <br><br>
-
-            <strong>Make the moment feel bigger.</strong>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- FEATURES -->
-
-<section id="features">
-
-    <div class="section-label reveal">
-        02 — Explore Cheerful
-    </div>
-
-    <h2 class="section-title reveal">
-        THERE'S MORE<br>
-        TO EXPLORE.
-    </h2>
-
-    <div class="feature-grid">
-
-        <article class="feature-card reveal">
-
-            <div class="feature-number">01</div>
-
-            <div class="feature-icon">🎬</div>
-
-            <h3>EDIT REQUEST</h3>
-
-            <p>
-                Have an idea for an edit?
-                Tell Cheerful what you have in mind.
-                This space is built for future edit requests.
-            </p>
-
-            <div class="feature-arrow">↗</div>
-
-        </article>
-
-
-        <article class="feature-card reveal">
-
-            <div class="feature-number">02</div>
-
-            <div class="feature-icon">💡</div>
-
-            <h3>SUGGEST</h3>
-
-            <p>
-                Got an idea for what Cheerful should
-                edit next? Send the idea and help shape
-                what's coming next.
-            </p>
-
-            <div class="feature-arrow">↗</div>
-
-        </article>
-
-
-        <article class="feature-card reveal">
-
-            <div class="feature-number">03</div>
-
-            <div class="feature-icon">📚</div>
-
-            <h3>CHEERFUL LAB</h3>
-
-            <p>
-                Editing tips, experiments, guides and
-                things learned while creating.
-                A creative space that's always growing.
-            </p>
-
-            <div class="feature-arrow">↗</div>
-
-        </article>
-
-
-        <article class="feature-card reveal">
-
-            <div class="feature-number">04</div>
-
-            <div class="feature-icon">🎁</div>
-
-            <h3>RESOURCES</h3>
-
-            <p>
-                Future presets, overlays, sounds,
-                wallpapers and other useful creative
-                resources made available by Cheerful.
-            </p>
-
-            <div class="feature-arrow">↗</div>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- STATEMENT -->
-
-<section class="statement">
-
-    <h2 class="reveal">
-
-        <span>DON'T</span>
-        <span>JUST</span>
-        <span class="accent">WATCH.</span>
-        <span>FEEL.</span>
-
-    </h2>
-
-</section>
-
-
-<!-- PROCESS -->
-
-<section id="process" class="process">
-
-    <div class="section-label reveal">
-        03 — The Philosophy
-    </div>
-
-    <h2 class="section-title reveal">
-        FIND.<br>
-        FEEL.<br>
-        CREATE.
-    </h2>
-
-    <div class="process-list">
-
-        <div class="process-row reveal">
-
-            <div class="process-num">01</div>
-
-            <div class="process-name">FIND</div>
-
-            <div class="process-description">
-                Find the moment that has something worth saying.
-                Sometimes it's obvious. Sometimes it's hidden.
+            <div class="card-icon">
+                🎬
             </div>
 
-        </div>
-
-
-        <div class="process-row reveal">
-
-            <div class="process-num">02</div>
-
-            <div class="process-name">FEEL</div>
-
-            <div class="process-description">
-                Understand what makes the moment work —
-                emotion, energy, tension, humour or story.
+            <div class="card-arrow">
+                ↗
             </div>
-
-        </div>
-
-
-        <div class="process-row reveal">
-
-            <div class="process-num">03</div>
-
-            <div class="process-name">CREATE</div>
-
-            <div class="process-description">
-                Build around that feeling with rhythm,
-                sound, movement, effects and timing.
-            </div>
-
-        </div>
-
-
-        <div class="process-row reveal">
-
-            <div class="process-num">04</div>
-
-            <div class="process-name">SHARE</div>
-
-            <div class="process-description">
-                Put it into the world and let the moment
-                become someone else's memory.
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- CONTENT CLAIM -->
-
-<section id="claims" class="claim-section">
-
-    <div class="section-label reveal">
-        04 — Content Claims
-    </div>
-
-    <h2 class="section-title reveal">
-        YOUR CONTENT.<br>
-        YOUR CLAIM.
-    </h2>
-
-
-    <div class="claim-container reveal">
-
-        <div class="claim-intro">
 
             <h3>
-                DO YOU OWN ANY OF <span>THIS CONTENT?</span>
+                Edit Request
             </h3>
 
             <p>
-                If your content appears in a Cheerful edit
-                and you believe you own or represent the
-                rights to that content, you can create a
-                Content Claim ID here.
+                Request an edit and send the details directly to Cheerful.
             </p>
 
+        </a>
+
+
+        <a class="card" href="#ideas">
+
+            <div class="card-icon">
+                💡
+            </div>
+
+            <div class="card-arrow">
+                ↗
+            </div>
+
+            <h3>
+                Idea Vault
+            </h3>
+
             <p>
-                Provide the relevant information and
-                supporting proof. Once your claim is created,
-                you'll receive a unique ID that you can
-                include when contacting Cheerful by email.
+                Have an idea? Put it into the Cheerful idea vault.
             </p>
+
+        </a>
+
+
+        <a class="card" href="#community">
+
+            <div class="card-icon">
+                🗳️
+            </div>
+
+            <div class="card-arrow">
+                ↗
+            </div>
+
+            <h3>
+                Community
+            </h3>
+
+            <p>
+                Vote, discuss, share ideas and become part of Cheerful.
+            </p>
+
+        </a>
+
+
+        <a class="card" href="#pro">
+
+            <div class="card-icon">
+                👑
+            </div>
+
+            <div class="card-arrow">
+                ↗
+            </div>
+
+            <h3>
+                PRO
+            </h3>
+
+            <p>
+                A special status for long-term Cheerful supporters.
+            </p>
+
+        </a>
+
+
+        <a class="card" href="#lab">
+
+            <div class="card-icon">
+                📚
+            </div>
+
+            <div class="card-arrow">
+                ↗
+            </div>
+
+            <h3>
+                Cheerful Lab
+            </h3>
+
+            <p>
+                Learn editing techniques, workflows and creative tricks.
+            </p>
+
+        </a>
+
+
+        <a class="card" href="#resources">
+
+            <div class="card-icon">
+                🎁
+            </div>
+
+            <div class="card-arrow">
+                ↗
+            </div>
+
+            <h3>
+                Resources
+            </h3>
+
+            <p>
+                Free creative resources made available by Cheerful.
+            </p>
+
+        </a>
+
+
+        <a class="card" href="#claims">
+
+            <div class="card-icon">
+                🛡️
+            </div>
+
+            <div class="card-arrow">
+                ↗
+            </div>
+
+            <h3>
+                Content Claims
+            </h3>
+
+            <p>
+                Own content used in an edit? Start a formal claim request.
+            </p>
+
+        </a>
+
+
+        <a class="card" href="#journal">
+
+            <div class="card-icon">
+                📖
+            </div>
+
+            <div class="card-arrow">
+                ↗
+            </div>
+
+            <h3>
+                Journal
+            </h3>
+
+            <p>
+                Updates, thoughts, announcements and the story behind Cheerful.
+            </p>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- COMMUNITY -->
+
+<section class="reveal" id="community">
+
+    <div class="section-label">
+        02 / Community
+    </div>
+
+    <h2 class="section-title">
+        You're not just a viewer.
+    </h2>
+
+    <p class="section-desc">
+        Welcome to the Cheerful community — a place for people who enjoy
+        edits, creativity and being part of what comes next.
+    </p>
+
+
+    <div class="community-grid">
+
+
+        <div class="feed">
+
+            <div class="feed-head">
+
+                <h3>
+                    Community Feed
+                </h3>
+
+                <span class="badge">
+                    COMMUNITY
+                </span>
+
+            </div>
+
+
+            <div class="post">
+
+                <div class="post-meta">
+                    CHEERFUL • ANNOUNCEMENT
+                </div>
+
+                <h4>
+                    Welcome to the Cheerful Community 👋
+                </h4>
+
+                <p>
+                    This is the beginning of a place where the people watching
+                    Cheerful can actually help shape what comes next.
+                </p>
+
+                <div class="post-actions">
+
+                    <button class="small-btn likeBtn">
+                        ♡ Like <span>0</span>
+                    </button>
+
+                    <button class="small-btn">
+                        💬 Discuss
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="post">
+
+                <div class="post-meta">
+                    CHEERFUL • QUESTION
+                </div>
+
+                <h4>
+                    What should Cheerful edit next?
+                </h4>
+
+                <p>
+                    Drop your ideas in the Idea Vault and vote on community
+                    suggestions.
+                </p>
+
+                <div class="post-actions">
+
+                    <a href="#ideas" class="small-btn">
+                        💡 Submit Idea
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="post">
+
+                <div class="post-meta">
+                    COMMUNITY
+                </div>
+
+                <h4>
+                    Show us what you made.
+                </h4>
+
+                <p>
+                    Future community drops can feature fan edits, artwork and
+                    creative projects.
+                </p>
+
+            </div>
 
         </div>
 
 
-        <div class="claim-layout">
+        <!-- POLL -->
 
-            <!-- FORM -->
+        <div class="side-panel">
 
-            <form class="form" id="claimForm">
+            <div class="section-label">
+                COMMUNITY POLL
+            </div>
+
+            <h3 style="font-family:'Space Grotesk';font-size:1.5rem;margin-bottom:15px;">
+                What should we focus on?
+            </h3>
+
+
+            <button class="poll-option" data-poll="1">
+
+                <div class="poll-bar"></div>
+
+                <span>
+                    More cinematic edits
+                </span>
+
+            </button>
+
+
+            <button class="poll-option" data-poll="2">
+
+                <div class="poll-bar"></div>
+
+                <span>
+                    More funny edits
+                </span>
+
+            </button>
+
+
+            <button class="poll-option" data-poll="3">
+
+                <div class="poll-bar"></div>
+
+                <span>
+                    Editing tutorials
+                </span>
+
+            </button>
+
+
+            <button class="poll-option" data-poll="4">
+
+                <div class="poll-bar"></div>
+
+                <span>
+                    Behind the scenes
+                </span>
+
+            </button>
+
+
+            <p style="color:#666;font-size:.7rem;margin-top:15px;">
+                Poll results are stored locally on this device in this version.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- IDEA VAULT -->
+
+<section class="hub reveal" id="ideas">
+
+    <div class="section-label">
+        03 / Idea Vault
+    </div>
+
+    <h2 class="section-title">
+        Got an idea?
+    </h2>
+
+    <p class="section-desc">
+        Put it into the vault. Your suggestion gets its own IDEA ID so you
+        can keep track of it.
+    </p>
+
+
+    <div class="form-section">
+
+        <div class="form-box">
+
+            <form id="ideaForm">
 
                 <div class="field">
 
-                    <label for="claimName">
+                    <label>
                         Your name
                     </label>
 
                     <input
-                        id="claimName"
-                        type="text"
+                        id="ideaName"
                         required
                         placeholder="Your name"
                     >
@@ -1433,12 +1425,12 @@ footer strong{
 
                 <div class="field">
 
-                    <label for="claimEmail">
-                        Your email
+                    <label>
+                        Email
                     </label>
 
                     <input
-                        id="claimEmail"
+                        id="ideaEmail"
                         type="email"
                         required
                         placeholder="you@example.com"
@@ -1449,7 +1441,570 @@ footer strong{
 
                 <div class="field">
 
-                    <label for="videoUrl">
+                    <label>
+                        Your idea
+                    </label>
+
+                    <textarea
+                        id="ideaText"
+                        required
+                        placeholder="What should Cheerful create?"
+                    ></textarea>
+
+                </div>
+
+
+                <button class="btn primary" type="submit">
+                    Submit Idea →
+                </button>
+
+            </form>
+
+
+            <div class="result" id="ideaResult">
+
+                <div class="section-label">
+                    IDEA CREATED
+                </div>
+
+                <div
+                    class="result-id"
+                    id="generatedIdeaId"
+                ></div>
+
+                <p>
+                    Save this ID. Your email application will open with the
+                    suggestion already prepared.
+                </p>
+
+                <br>
+
+                <a
+                    class="btn primary"
+                    id="emailIdea"
+                >
+                    Email Cheerful →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRO -->
+
+<section class="pro-section reveal" id="pro">
+
+    <div class="section-label">
+        04 / Cheerful PRO
+    </div>
+
+    <h2 class="section-title">
+        For the ones who stayed.
+    </h2>
+
+
+    <div class="pro-box">
+
+        <div class="pro-crown">
+            👑
+        </div>
+
+        <h3>
+            CHEERFUL PRO
+        </h3>
+
+        <p>
+            A special membership status for people who have been subscribed
+            to the Cheerful YouTube channel for at least one year.
+        </p>
+
+
+        <div class="perks">
+
+            <div class="perk">
+
+                <b>
+                    ⭐ PRO Badge
+                </b>
+
+                <span>
+                    A special Cheerful PRO identity.
+                </span>
+
+            </div>
+
+
+            <div class="perk">
+
+                <b>
+                    🎬 Early Access
+                </b>
+
+                <span>
+                    Selected previews and announcements can be shared early.
+                </span>
+
+            </div>
+
+
+            <div class="perk">
+
+                <b>
+                    💡 Priority Ideas
+                </b>
+
+                <span>
+                    PRO suggestions can have their own dedicated queue.
+                </span>
+
+            </div>
+
+
+            <div class="perk">
+
+                <b>
+                    📚 PRO Lab
+                </b>
+
+                <span>
+                    Future exclusive editing tutorials and breakdowns.
+                </span>
+
+            </div>
+
+
+            <div class="perk">
+
+                <b>
+                    🎁 PRO Resources
+                </b>
+
+                <span>
+                    Future exclusive presets, overlays and creative resources.
+                </span>
+
+            </div>
+
+
+            <div class="perk">
+
+                <b>
+                    🏆 PRO Wall
+                </b>
+
+                <span>
+                    Long-term supporters can be recognized by Cheerful.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <p style="font-size:.75rem;color:#666;">
+
+            PRO eligibility is manually verified. The website cannot
+            independently verify YouTube subscription history in this
+            static version.
+
+        </p>
+
+
+        <br>
+
+
+        <button
+            class="btn primary"
+            onclick="openModal('proModal')"
+        >
+            Request PRO Membership →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- EDIT REQUEST -->
+
+<section class="reveal" id="edit">
+
+    <div class="section-label">
+        05 / Edit Request
+    </div>
+
+    <h2 class="section-title">
+        Want Cheerful to make something?
+    </h2>
+
+
+    <div class="form-section">
+
+        <div class="form-box">
+
+            <form id="editForm">
+
+                <div class="field">
+
+                    <label>
+                        Your name
+                    </label>
+
+                    <input id="editName" required>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Email
+                    </label>
+
+                    <input
+                        id="editEmail"
+                        type="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        What should we edit?
+                    </label>
+
+                    <input
+                        id="editSubject"
+                        required
+                        placeholder="Example: Football edit"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Reference / source URL
+                    </label>
+
+                    <input
+                        id="editUrl"
+                        type="url"
+                        placeholder="https://"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Details
+                    </label>
+
+                    <textarea
+                        id="editDetails"
+                        required
+                        placeholder="Tell us what you have in mind..."
+                    ></textarea>
+
+                </div>
+
+
+                <button class="btn primary" type="submit">
+                    Create Edit Request →
+                </button>
+
+            </form>
+
+
+            <div class="result" id="editResult">
+
+                <div class="section-label">
+                    REQUEST CREATED
+                </div>
+
+                <div
+                    class="result-id"
+                    id="generatedEditId"
+                ></div>
+
+                <p>
+                    Your request is ready to email to Cheerful.
+                </p>
+
+                <br>
+
+                <a
+                    class="btn primary"
+                    id="emailEdit"
+                >
+                    Email Request →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CHEERFUL LAB -->
+
+<section class="hub reveal" id="lab">
+
+    <div class="section-label">
+        06 / Cheerful Lab
+    </div>
+
+    <h2 class="section-title">
+        Experiment. Learn. Create.
+    </h2>
+
+
+    <div class="journal-grid">
+
+        <div class="journal-card">
+
+            <small>
+                LAB 001
+            </small>
+
+            <h3>
+                Editing Fundamentals
+            </h3>
+
+            <p>
+                A future collection of lessons covering pacing, cuts,
+                transitions and storytelling.
+            </p>
+
+        </div>
+
+
+        <div class="journal-card">
+
+            <small>
+                LAB 002
+            </small>
+
+            <h3>
+                Color & Mood
+            </h3>
+
+            <p>
+                Explore how color correction and grading can change the
+                emotion of an edit.
+            </p>
+
+        </div>
+
+
+        <div class="journal-card">
+
+            <small>
+                LAB 003
+            </small>
+
+            <h3>
+                Sound Design
+            </h3>
+
+            <p>
+                Learn how music, effects and silence can make an edit
+                feel completely different.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- RESOURCES -->
+
+<section class="reveal" id="resources">
+
+    <div class="section-label">
+        07 / Free Resources
+    </div>
+
+    <h2 class="section-title">
+        Tools for creators.
+    </h2>
+
+    <p class="section-desc">
+        A growing collection of resources Cheerful can make available
+        to creators.
+    </p>
+
+
+    <div
+        class="hub-grid"
+        style="margin-top:45px;"
+    >
+
+        <div class="card">
+
+            <div class="card-icon">
+                🎨
+            </div>
+
+            <h3>
+                Overlays
+            </h3>
+
+            <p>
+                Future free visual overlays for creators.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🔊
+            </div>
+
+            <h3>
+                Sound FX
+            </h3>
+
+            <p>
+                Future free sound-design resources.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🌈
+            </div>
+
+            <h3>
+                Color Packs
+            </h3>
+
+            <p>
+                Future free color-grading resources.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🖥️
+            </div>
+
+            <h3>
+                Templates
+            </h3>
+
+            <p>
+                Future editing templates and project resources.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTENT CLAIMS -->
+
+<section class="hub reveal" id="claims">
+
+    <div class="section-label">
+        08 / Content Claims
+    </div>
+
+    <h2 class="section-title">
+        HEY, DO YOU OWN ANY OF THIS CONTENT?
+    </h2>
+
+    <p class="section-desc">
+        If you own or represent the rights to content appearing in a
+        Cheerful edit, create a Content Claim ID and send the request
+        to us by email.
+    </p>
+
+
+    <div class="form-section">
+
+        <div class="form-box">
+
+            <div class="claim-note">
+
+                <strong>
+                    How it works:
+                </strong>
+
+                <br>
+
+                Create a unique Claim ID → save it → click the email
+                button → review the prepared email → send it to Cheerful.
+
+                <br><br>
+
+                This website is static, so requests are not centrally
+                stored on the server. Your local history is stored only
+                in this browser.
+
+            </div>
+
+
+            <form id="claimForm">
+
+                <div class="field">
+
+                    <label>
+                        Name
+                    </label>
+
+                    <input
+                        id="claimName"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Email
+                    </label>
+
+                    <input
+                        id="claimEmail"
+                        type="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
                         Cheerful video URL
                     </label>
 
@@ -1465,7 +2020,7 @@ footer strong{
 
                 <div class="field">
 
-                    <label for="originalUrl">
+                    <label>
                         Original / relevant content URL
                     </label>
 
@@ -1473,7 +2028,7 @@ footer strong{
                         id="originalUrl"
                         type="url"
                         required
-                        placeholder="https://..."
+                        placeholder="https://"
                     >
 
                 </div>
@@ -1481,14 +2036,13 @@ footer strong{
 
                 <div class="field">
 
-                    <label for="claimReason">
-                        Reason for your claim
+                    <label>
+                        Reason for claim / removal
                     </label>
 
                     <textarea
                         id="claimReason"
                         required
-                        placeholder="Tell us why you believe you own or represent the content."
                     ></textarea>
 
                 </div>
@@ -1496,20 +2050,20 @@ footer strong{
 
                 <div class="field">
 
-                    <label for="proof">
+                    <label>
                         Proof / supporting information
                     </label>
 
                     <textarea
                         id="proof"
                         required
-                        placeholder="Provide links or information that supports your claim."
+                        placeholder="Explain what proves your ownership or authorization."
                     ></textarea>
 
                 </div>
 
 
-                <label class="check">
+                <label class="checkbox">
 
                     <input
                         type="checkbox"
@@ -1518,152 +2072,77 @@ footer strong{
                     >
 
                     <span>
-                        I confirm that the information I provide
-                        is accurate and relevant to my claim.
+                        I confirm that the information I provided is
+                        accurate and relevant to this claim.
                     </span>
 
                 </label>
 
 
                 <button
+                    class="btn primary"
                     type="submit"
-                    class="primary-btn"
                 >
-                    CREATE CONTENT CLAIM ID →
+                    Create Content Claim ID →
                 </button>
 
             </form>
 
 
-            <!-- INFO -->
+            <div
+                class="result"
+                id="claimResult"
+            >
 
-            <aside class="claim-info">
-
-                <h4>
-                    HOW IT WORKS
-                </h4>
-
-                <p>
-                    Creating an ID doesn't automatically
-                    remove content. It identifies your
-                    request so it can be communicated
-                    clearly through email.
-                </p>
-
-                <div class="claim-steps">
-
-                    <div class="claim-step">
-                        <b>01</b>
-                        <span>Fill in your claim.</span>
-                    </div>
-
-                    <div class="claim-step">
-                        <b>02</b>
-                        <span>Provide supporting proof.</span>
-                    </div>
-
-                    <div class="claim-step">
-                        <b>03</b>
-                        <span>Receive your unique ID.</span>
-                    </div>
-
-                    <div class="claim-step">
-                        <b>04</b>
-                        <span>Email Cheerful with your ID.</span>
-                    </div>
-
+                <div class="section-label">
+                    YOUR CLAIM ID
                 </div>
 
-            </aside>
+                <div
+                    class="result-id"
+                    id="generatedId"
+                ></div>
 
-        </div>
+                <p>
+                    Save this ID. Your email application will open with
+                    your claim details already prepared.
+                </p>
 
-
-        <!-- RESULT -->
-
-        <div class="claim-result" id="claimResult">
-
-            <div class="result-label">
-                Claim created successfully
-            </div>
-
-            <div
-                class="claim-id"
-                id="generatedId"
-            ></div>
-
-            <div class="result-note">
-                Save this ID. To complete your request,
-                email Cheerful and include this Content
-                Claim ID along with the relevant information.
-            </div>
-
-            <div class="result-buttons">
+                <br>
 
                 <button
-                    class="primary-btn"
+                    class="btn"
                     id="copyId"
-                    type="button"
                 >
-                    COPY ID
+                    Copy Claim ID
                 </button>
 
                 <a
-                    class="secondary-btn"
+                    class="btn primary"
                     id="emailClaim"
-                    href="#"
                 >
-                    EMAIL CHEERFUL →
+                    Email Cheerful →
                 </a>
 
             </div>
 
-        </div>
 
+            <div class="history">
 
-        <!-- HISTORY -->
+                <h3>
+                    Your Claim History
+                </h3>
 
-        <div class="history">
-
-            <div class="history-head">
-
-                <div class="history-title">
-                    MY CLAIM HISTORY
-                </div>
+                <div id="historyList"></div>
 
                 <button
-                    class="clear-history"
+                    class="small-btn"
                     id="clearHistory"
-                    type="button"
                 >
-                    Clear history
+                    Clear Local History
                 </button>
 
             </div>
-
-            <div
-                class="history-list"
-                id="historyList"
-            ></div>
-
-        </div>
-
-
-        <!-- DIRECT EMAIL -->
-
-        <div class="email-area">
-
-            <p>
-                Prefer to contact Cheerful directly?
-                You can also email:
-            </p>
-
-            <a
-                class="email-link"
-                href="mailto:senulamarasingha230@gmail.com"
-            >
-                senulamarasingha230@gmail.com ↗
-            </a>
 
         </div>
 
@@ -1671,7 +2150,141 @@ footer strong{
 
 </section>
 
-</main>
+
+<!-- JOURNAL -->
+
+<section class="reveal" id="journal">
+
+    <div class="section-label">
+        09 / Journal
+    </div>
+
+    <h2 class="section-title">
+        Inside Cheerful.
+    </h2>
+
+
+    <div class="journal-grid">
+
+        <div class="journal-card">
+
+            <small>
+                COMING SOON
+            </small>
+
+            <h3>
+                The Cheerful Story
+            </h3>
+
+            <p>
+                Notes about how the brand started and where it's going.
+            </p>
+
+        </div>
+
+
+        <div class="journal-card">
+
+            <small>
+                CREATIVE
+            </small>
+
+            <h3>
+                How an Edit Comes Together
+            </h3>
+
+            <p>
+                Future behind-the-scenes articles about the creative process.
+            </p>
+
+        </div>
+
+
+        <div class="journal-card">
+
+            <small>
+                UPDATES
+            </small>
+
+            <h3>
+                Cheerful News
+            </h3>
+
+            <p>
+                Future announcements, releases and community updates.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- YOUTUBE -->
+
+<section class="hub reveal">
+
+    <div class="section-label">
+        10 / YouTube
+    </div>
+
+    <h2 class="section-title">
+        Watch Cheerful.
+    </h2>
+
+    <p class="section-desc">
+        The main home for Cheerful's edits and videos.
+    </p>
+
+    <br>
+
+    <a
+        class="btn primary"
+        id="youtubeButton"
+        href="https://www.youtube.com/@CheerfulOfficial"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        Open YouTube Channel →
+    </a>
+
+</section>
+
+
+<!-- SEARCH -->
+
+<section class="reveal">
+
+    <div class="section-label">
+        11 / Search
+    </div>
+
+    <h2
+        class="section-title"
+        style="text-align:center;margin:auto;"
+    >
+        Find your way around.
+    </h2>
+
+
+    <div class="search-wrap">
+
+        <input
+            id="search"
+            placeholder="Search Cheerful..."
+            autocomplete="off"
+        >
+
+    </div>
+
+
+    <div
+        id="searchResults"
+        class="search-results"
+    ></div>
+
+</section>
 
 
 <!-- FOOTER -->
@@ -1679,266 +2292,304 @@ footer strong{
 <footer>
 
     <div>
-        © <span id="year"></span>
-        <strong>CHEERFUL</strong>
+
+        <strong>
+            CHEERFUL
+        </strong>
+
+        <br>
+
+        Turning moments into emotions.
+
     </div>
 
+
     <div>
-        Turning moments into emotions.
+        © 2026 Cheerful
+    </div>
+
+
+    <div>
+
+        <a href="mailto:senulamarasingha230@gmail.com">
+            senulamarasingha230@gmail.com
+        </a>
+
     </div>
 
 </footer>
+
+
+<!-- PRO MODAL -->
+
+<div
+    class="modal"
+    id="proModal"
+>
+
+    <div class="modal-box">
+
+        <button
+            class="close"
+            onclick="closeModal('proModal')"
+        >
+            ×
+        </button>
+
+
+        <div class="section-label">
+            CHEERFUL PRO
+        </div>
+
+
+        <h2
+            class="section-title"
+            style="font-size:3rem;"
+        >
+            Think you've been here for a year?
+        </h2>
+
+
+        <p class="section-desc">
+            Request PRO membership and Cheerful can manually review
+            your eligibility.
+        </p>
+
+
+        <br>
+
+
+        <form id="proForm">
+
+            <div class="field">
+
+                <label>
+                    Name
+                </label>
+
+                <input
+                    id="proName"
+                    required
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                    id="proEmail"
+                    type="email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    YouTube channel URL
+                </label>
+
+                <input
+                    id="proChannel"
+                    type="url"
+                    required
+                    placeholder="https://youtube.com/@..."
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Approximate subscription date
+                </label>
+
+                <input
+                    id="proDate"
+                    type="date"
+                    required
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Why should you receive PRO?
+                </label>
+
+                <textarea
+                    id="proReason"
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <label class="checkbox">
+
+                <input
+                    type="checkbox"
+                    id="proAccuracy"
+                    required
+                >
+
+                <span>
+                    I understand that PRO eligibility is manually reviewed
+                    and that submitting this request does not guarantee
+                    membership.
+                </span>
+
+            </label>
+
+
+            <button
+                class="btn primary"
+                type="submit"
+            >
+                Create PRO Request →
+            </button>
+
+        </form>
+
+
+        <div
+            class="result"
+            id="proResult"
+        >
+
+            <div class="section-label">
+                PRO REQUEST CREATED
+            </div>
+
+            <div
+                class="result-id"
+                id="generatedProId"
+            ></div>
+
+            <p>
+                Save your PRO request ID. Your email application is ready.
+            </p>
+
+            <br>
+
+            <a
+                class="btn primary"
+                id="emailPro"
+            >
+                Email PRO Request →
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
 
 
 <script>
 
 /* =========================================================
    CHEERFUL CONFIG
-   Change these later when you have the real links.
-   ========================================================= */
+========================================================= */
 
 const CONFIG = {
 
-    youtube: "",
+    youtube:
+        "https://www.youtube.com/@CheerfulOfficial",
 
-    email: "senulamarasingha230@gmail.com"
+    email:
+        "senulamarasingha230@gmail.com"
 
 };
 
 
-/* YEAR */
+const STORAGE = {
 
-document.getElementById("year").textContent =
-    new Date().getFullYear();
+    claims:
+        "cheerful_content_claim_history_v1",
 
+    ideas:
+        "cheerful_idea_history_v1",
 
-/* YOUTUBE */
+    edits:
+        "cheerful_edit_history_v1",
 
-const youtubeButton =
-    document.getElementById("youtubeButton");
+    pro:
+        "cheerful_pro_history_v1"
 
-if(CONFIG.youtube.trim() !== ""){
-
-    youtubeButton.href = CONFIG.youtube;
-    youtubeButton.style.display = "block";
-
-}
-
-
-/* MOBILE NAV */
-
-const menuButton =
-    document.getElementById("menuButton");
-
-const navLinks =
-    document.getElementById("navLinks");
-
-menuButton.addEventListener("click",()=>{
-
-    navLinks.classList.toggle("open");
-
-    menuButton.textContent =
-        navLinks.classList.contains("open")
-        ? "×"
-        : "☰";
-
-});
-
-
-document.querySelectorAll(".nav-links a")
-.forEach(link=>{
-
-    link.addEventListener("click",()=>{
-
-        navLinks.classList.remove("open");
-        menuButton.textContent = "☰";
-
-    });
-
-});
-
-
-/* SCROLL REVEAL */
-
-const revealElements =
-    document.querySelectorAll(".reveal");
-
-const observer =
-    new IntersectionObserver(
-
-        entries=>{
-
-            entries.forEach(entry=>{
-
-                if(entry.isIntersecting){
-
-                    entry.target.classList.add("visible");
-
-                    observer.unobserve(entry.target);
-
-                }
-
-            });
-
-        },
-
-        {
-            threshold:.12
-        }
-
-    );
-
-
-revealElements.forEach(el=>{
-    observer.observe(el);
-});
-
-
-/* FEATURE CARD TILT */
-
-if(
-    !window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches
-){
-
-    document
-    .querySelectorAll(".feature-card")
-    .forEach(card=>{
-
-        card.addEventListener("mousemove",event=>{
-
-            const rect =
-                card.getBoundingClientRect();
-
-            const x =
-                event.clientX - rect.left;
-
-            const y =
-                event.clientY - rect.top;
-
-            const rotateX =
-                ((y / rect.height)-.5) * -4;
-
-            const rotateY =
-                ((x / rect.width)-.5) * 4;
-
-            card.style.transform =
-                `perspective(900px)
-                 rotateX(${rotateX}deg)
-                 rotateY(${rotateY}deg)
-                 translateY(-7px)`;
-
-        });
-
-        card.addEventListener("mouseleave",()=>{
-
-            card.style.transform = "";
-
-        });
-
-    });
-
-}
-
-
-/* TOAST */
-
-function showToast(message){
-
-    const toast =
-        document.getElementById("toast");
-
-    toast.textContent = message;
-    toast.classList.add("show");
-
-    clearTimeout(window.toastTimer);
-
-    window.toastTimer =
-        setTimeout(()=>{
-
-            toast.classList.remove("show");
-
-        },2500);
-
-}
+};
 
 
 /* =========================================================
-   CONTENT CLAIM SYSTEM
-   ========================================================= */
-
-const claimForm =
-    document.getElementById("claimForm");
-
-const claimResult =
-    document.getElementById("claimResult");
-
-const generatedId =
-    document.getElementById("generatedId");
-
-const emailClaim =
-    document.getElementById("emailClaim");
-
-const copyId =
-    document.getElementById("copyId");
-
-const historyList =
-    document.getElementById("historyList");
-
-const clearHistory =
-    document.getElementById("clearHistory");
-
-
-/* STORAGE KEY */
-
-const STORAGE_KEY =
-    "cheerful_content_claim_history_v1";
-
-
-/* RANDOM ID */
+   HELPERS
+========================================================= */
 
 function randomPart(length){
 
     const chars =
         "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 
-    let result = "";
+    let output = "";
 
-    for(let i=0;i<length;i++){
+    for(let i = 0; i < length; i++){
 
-        result +=
+        output +=
             chars[
                 Math.floor(
-                    Math.random()*chars.length
+                    Math.random() * chars.length
                 )
             ];
 
     }
 
-    return result;
+    return output;
 
 }
 
 
-function createClaimId(){
+function createId(prefix){
 
-    return `CR-${randomPart(4)}-${randomPart(4)}`;
+    return `${prefix}-${randomPart(4)}-${randomPart(4)}`;
 
 }
 
 
-/* LOAD HISTORY */
+function escapeHTML(value){
 
-function getHistory(){
+    return String(value ?? "")
+
+        .replaceAll("&","&amp;")
+
+        .replaceAll("<","&lt;")
+
+        .replaceAll(">","&gt;")
+
+        .replaceAll('"',"&quot;")
+
+        .replaceAll("'","&#039;");
+
+}
+
+
+function getHistory(key){
 
     try{
 
         return JSON.parse(
-            localStorage.getItem(STORAGE_KEY)
+            localStorage.getItem(key)
         ) || [];
 
-    }catch(error){
+    }catch{
 
         return [];
 
@@ -1947,34 +2598,104 @@ function getHistory(){
 }
 
 
-/* SAVE HISTORY */
-
-function saveHistory(history){
+function saveHistory(key,data){
 
     localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(history)
+        key,
+        JSON.stringify(data)
     );
 
 }
 
 
-/* RENDER HISTORY */
+function openModal(id){
+
+    document
+        .getElementById(id)
+        .classList.add("open");
+
+}
+
+
+function closeModal(id){
+
+    document
+        .getElementById(id)
+        .classList.remove("open");
+
+}
+
+
+function buildMailto(subject,body){
+
+    return (
+        `mailto:${CONFIG.email}` +
+        `?subject=${encodeURIComponent(subject)}` +
+        `&body=${encodeURIComponent(body)}`
+    );
+
+}
+
+
+/* =========================================================
+   MOBILE NAV
+========================================================= */
+
+const menuBtn =
+    document.getElementById("menuBtn");
+
+const navLinks =
+    document.getElementById("navLinks");
+
+
+menuBtn.addEventListener("click",()=>{
+
+    navLinks.classList.toggle("open");
+
+});
+
+
+document
+    .querySelectorAll(".navlinks a")
+    .forEach(link=>{
+
+        link.addEventListener("click",()=>{
+
+            navLinks.classList.remove("open");
+
+        });
+
+    });
+
+
+/* =========================================================
+   CLAIM SYSTEM
+========================================================= */
+
+let currentClaimId = "";
+
 
 function renderHistory(){
 
+    const list =
+        document.getElementById("historyList");
+
     const history =
-        getHistory();
+        getHistory(STORAGE.claims);
 
-    historyList.innerHTML = "";
 
-    if(history.length === 0){
+    if(!history.length){
 
-        historyList.innerHTML = `
-            <div class="empty-history">
-                No Content Claim requests have been created
-                on this device yet.
+        list.innerHTML = `
+
+            <div style="
+                color:#666;
+                font-size:.78rem;
+                padding:10px 0;
+            ">
+                No local claims yet.
             </div>
+
         `;
 
         return;
@@ -1982,71 +2703,122 @@ function renderHistory(){
     }
 
 
-    history
-    .slice()
-    .reverse()
-    .forEach(claim=>{
+    list.innerHTML = history.map(item=>`
 
-        const item =
-            document.createElement("div");
-
-        item.className =
-            "history-item";
-
-        item.innerHTML = `
+        <div class="history-item">
 
             <div>
 
                 <div class="history-id">
-                    ${escapeHTML(claim.id)}
+                    ${escapeHTML(item.id)}
                 </div>
 
-                <div class="history-date">
-                    ${escapeHTML(claim.date)}
+                <div class="history-type">
+                    ${escapeHTML(item.date)}
                 </div>
 
             </div>
 
-            <div class="history-status">
+            <div class="history-type">
                 EMAIL REQUIRED
             </div>
 
-        `;
+        </div>
 
-        historyList.appendChild(item);
-
-    });
+    `).join("");
 
 }
 
 
-/* BASIC HTML ESCAPING */
+document
+    .getElementById("claimForm")
+    .addEventListener("submit",(event)=>{
 
-function escapeHTML(value){
-
-    return String(value)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
+        event.preventDefault();
 
 
-/* BUILD EMAIL */
+        const claim = {
 
-function buildEmail(claim){
+            id:
+                createId("CR"),
 
-    const subject =
-        `Content Claim Request — ${claim.id}`;
+            name:
+                document
+                    .getElementById("claimName")
+                    .value
+                    .trim(),
 
-    const body =
-`Hello Cheerful,
+            email:
+                document
+                    .getElementById("claimEmail")
+                    .value
+                    .trim(),
 
-I am contacting you regarding a Content Claim request.
+            video:
+                document
+                    .getElementById("videoUrl")
+                    .value
+                    .trim(),
 
-Content Claim ID:
+            original:
+                document
+                    .getElementById("originalUrl")
+                    .value
+                    .trim(),
+
+            reason:
+                document
+                    .getElementById("claimReason")
+                    .value
+                    .trim(),
+
+            proof:
+                document
+                    .getElementById("proof")
+                    .value
+                    .trim(),
+
+            date:
+                new Date().toLocaleString()
+
+        };
+
+
+        currentClaimId =
+            claim.id;
+
+
+        const history =
+            getHistory(STORAGE.claims);
+
+
+        history.unshift(claim);
+
+
+        saveHistory(
+            STORAGE.claims,
+            history.slice(0,25)
+        );
+
+
+        document
+            .getElementById("generatedId")
+            .textContent =
+            claim.id;
+
+
+        document
+            .getElementById("claimResult")
+            .classList.add("show");
+
+
+        const emailBody = `
+
+Hello Cheerful,
+
+I am submitting a Content Claim Request.
+
+Claim ID:
 ${claim.id}
 
 Name:
@@ -2055,213 +2827,790 @@ ${claim.name}
 Email:
 ${claim.email}
 
-Cheerful video URL:
-${claim.videoUrl}
+Cheerful Video:
+${claim.video}
 
-Original / relevant content URL:
-${claim.originalUrl}
+Original / Relevant Content:
+${claim.original}
 
-Reason for claim:
+Reason for Claim / Removal:
 ${claim.reason}
 
-Proof / supporting information:
+Proof / Supporting Information:
 ${claim.proof}
 
-Thank you.`;
+I confirm that the information provided is accurate and relevant.
+
+Thank you.
+
+`;
 
 
-    return `mailto:${encodeURIComponent(CONFIG.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-}
-
-
-/* SUBMIT CLAIM */
-
-claimForm.addEventListener("submit",event=>{
-
-    event.preventDefault();
+        document
+            .getElementById("emailClaim")
+            .href =
+            buildMailto(
+                `Content Claim Request — ${claim.id}`,
+                emailBody
+            );
 
 
-    const claim = {
+        renderHistory();
 
-        id:createClaimId(),
 
-        name:
-            document.getElementById("claimName").value.trim(),
+        document
+            .getElementById("claimResult")
+            .scrollIntoView({
 
-        email:
-            document.getElementById("claimEmail").value.trim(),
+                behavior:"smooth",
+                block:"center"
 
-        videoUrl:
-            document.getElementById("videoUrl").value.trim(),
+            });
 
-        originalUrl:
-            document.getElementById("originalUrl").value.trim(),
+    });
 
-        reason:
-            document.getElementById("claimReason").value.trim(),
 
-        proof:
-            document.getElementById("proof").value.trim(),
+document
+    .getElementById("copyId")
+    .addEventListener("click",async()=>{
 
-        date:
-            new Date().toLocaleString(
-                undefined,
-                {
-                    dateStyle:"medium",
-                    timeStyle:"short"
-                }
+        if(!currentClaimId) return;
+
+
+        try{
+
+            await navigator.clipboard
+                .writeText(currentClaimId);
+
+
+            const button =
+                document.getElementById("copyId");
+
+
+            button.textContent =
+                "Copied ✓";
+
+
+            setTimeout(()=>{
+
+                button.textContent =
+                    "Copy Claim ID";
+
+            },1800);
+
+
+        }catch{
+
+            alert(
+                "Copy failed. Please copy the ID manually."
+            );
+
+        }
+
+    });
+
+
+document
+    .getElementById("clearHistory")
+    .addEventListener("click",()=>{
+
+        if(
+            confirm(
+                "Clear your local Cheerful claim history?"
             )
+        ){
 
-    };
+            localStorage.removeItem(
+                STORAGE.claims
+            );
 
+            renderHistory();
 
-    /* SAVE */
+        }
 
-    const history =
-        getHistory();
+    });
 
-    history.push(claim);
-
-    saveHistory(history);
-
-    renderHistory();
-
-
-    /* DISPLAY RESULT */
-
-    generatedId.textContent =
-        claim.id;
-
-    emailClaim.href =
-        buildEmail(claim);
-
-    claimResult.classList.add("show");
-
-
-    /* SCROLL RESULT */
-
-    setTimeout(()=>{
-
-        claimResult.scrollIntoView({
-            behavior:"smooth",
-            block:"center"
-        });
-
-    },100);
-
-
-    showToast("Content Claim ID created.");
-
-});
-
-
-/* COPY ID */
-
-copyId.addEventListener("click",async()=>{
-
-    const id =
-        generatedId.textContent;
-
-    if(!id) return;
-
-    try{
-
-        await navigator.clipboard.writeText(id);
-
-        showToast("Claim ID copied.");
-
-    }catch(error){
-
-        showToast("Copy failed — select the ID manually.");
-
-    }
-
-});
-
-
-/* CLEAR HISTORY */
-
-clearHistory.addEventListener("click",()=>{
-
-    const history =
-        getHistory();
-
-    if(history.length === 0){
-
-        showToast("There is no history to clear.");
-
-        return;
-
-    }
-
-
-    const confirmed =
-        confirm(
-            "Clear all Content Claim history from this device?"
-        );
-
-
-    if(!confirmed) return;
-
-
-    localStorage.removeItem(STORAGE_KEY);
-
-    renderHistory();
-
-    showToast("Claim history cleared.");
-
-});
-
-
-/* INITIAL HISTORY */
 
 renderHistory();
 
 
 /* =========================================================
-   MAGNETIC BUTTONS
-   ========================================================= */
+   IDEA VAULT
+========================================================= */
 
-if(
-    !window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches
-){
+document
+    .getElementById("ideaForm")
+    .addEventListener("submit",(event)=>{
 
-    document
-    .querySelectorAll(".primary-btn,.nav-pill")
-    .forEach(button=>{
+        event.preventDefault();
 
-        button.addEventListener("mousemove",event=>{
 
-            const rect =
-                button.getBoundingClientRect();
+        const idea = {
 
-            const x =
-                event.clientX -
-                rect.left -
-                rect.width/2;
+            id:
+                createId("IDEA"),
 
-            const y =
-                event.clientY -
-                rect.top -
-                rect.height/2;
+            name:
+                document
+                    .getElementById("ideaName")
+                    .value
+                    .trim(),
 
-            button.style.transform =
-                `translate(${x*.1}px,${y*.1}px)`;
+            email:
+                document
+                    .getElementById("ideaEmail")
+                    .value
+                    .trim(),
 
-        });
+            text:
+                document
+                    .getElementById("ideaText")
+                    .value
+                    .trim(),
 
-        button.addEventListener("mouseleave",()=>{
+            date:
+                new Date().toLocaleString()
 
-            button.style.transform = "";
+        };
 
-        });
+
+        const history =
+            getHistory(STORAGE.ideas);
+
+
+        history.unshift(idea);
+
+
+        saveHistory(
+            STORAGE.ideas,
+            history.slice(0,25)
+        );
+
+
+        document
+            .getElementById("generatedIdeaId")
+            .textContent =
+            idea.id;
+
+
+        document
+            .getElementById("ideaResult")
+            .classList.add("show");
+
+
+        const body = `
+
+Hello Cheerful,
+
+I would like to submit an idea.
+
+Idea ID:
+${idea.id}
+
+Name:
+${idea.name}
+
+Email:
+${idea.email}
+
+Idea:
+${idea.text}
+
+Thank you.
+
+`;
+
+
+        document
+            .getElementById("emailIdea")
+            .href =
+            buildMailto(
+                `Cheerful Idea — ${idea.id}`,
+                body
+            );
+
+    });
+
+
+/* =========================================================
+   EDIT REQUEST
+========================================================= */
+
+document
+    .getElementById("editForm")
+    .addEventListener("submit",(event)=>{
+
+        event.preventDefault();
+
+
+        const request = {
+
+            id:
+                createId("EDIT"),
+
+            name:
+                document
+                    .getElementById("editName")
+                    .value
+                    .trim(),
+
+            email:
+                document
+                    .getElementById("editEmail")
+                    .value
+                    .trim(),
+
+            subject:
+                document
+                    .getElementById("editSubject")
+                    .value
+                    .trim(),
+
+            url:
+                document
+                    .getElementById("editUrl")
+                    .value
+                    .trim(),
+
+            details:
+                document
+                    .getElementById("editDetails")
+                    .value
+                    .trim(),
+
+            date:
+                new Date().toLocaleString()
+
+        };
+
+
+        const history =
+            getHistory(STORAGE.edits);
+
+
+        history.unshift(request);
+
+
+        saveHistory(
+            STORAGE.edits,
+            history.slice(0,25)
+        );
+
+
+        document
+            .getElementById("generatedEditId")
+            .textContent =
+            request.id;
+
+
+        document
+            .getElementById("editResult")
+            .classList.add("show");
+
+
+        const body = `
+
+Hello Cheerful,
+
+I would like to submit an Edit Request.
+
+Request ID:
+${request.id}
+
+Name:
+${request.name}
+
+Email:
+${request.email}
+
+Edit:
+${request.subject}
+
+Reference URL:
+${request.url || "Not provided"}
+
+Details:
+${request.details}
+
+Thank you.
+
+`;
+
+
+        document
+            .getElementById("emailEdit")
+            .href =
+            buildMailto(
+                `Edit Request — ${request.id}`,
+                body
+            );
+
+    });
+
+
+/* =========================================================
+   PRO MEMBERSHIP
+========================================================= */
+
+document
+    .getElementById("proForm")
+    .addEventListener("submit",(event)=>{
+
+        event.preventDefault();
+
+
+        const request = {
+
+            id:
+                createId("PRO"),
+
+            name:
+                document
+                    .getElementById("proName")
+                    .value
+                    .trim(),
+
+            email:
+                document
+                    .getElementById("proEmail")
+                    .value
+                    .trim(),
+
+            channel:
+                document
+                    .getElementById("proChannel")
+                    .value
+                    .trim(),
+
+            subscriptionDate:
+                document
+                    .getElementById("proDate")
+                    .value,
+
+            reason:
+                document
+                    .getElementById("proReason")
+                    .value
+                    .trim(),
+
+            submitted:
+                new Date().toLocaleString()
+
+        };
+
+
+        const history =
+            getHistory(STORAGE.pro);
+
+
+        history.unshift(request);
+
+
+        saveHistory(
+            STORAGE.pro,
+            history.slice(0,25)
+        );
+
+
+        document
+            .getElementById("generatedProId")
+            .textContent =
+            request.id;
+
+
+        document
+            .getElementById("proResult")
+            .classList.add("show");
+
+
+        const body = `
+
+Hello Cheerful,
+
+I would like to request Cheerful PRO membership.
+
+PRO Request ID:
+${request.id}
+
+Name:
+${request.name}
+
+Email:
+${request.email}
+
+YouTube Channel:
+${request.channel}
+
+Approximate Subscription Date:
+${request.subscriptionDate}
+
+Why I believe I should receive PRO:
+${request.reason}
+
+I understand that PRO eligibility is manually reviewed.
+
+Thank you.
+
+`;
+
+
+        document
+            .getElementById("emailPro")
+            .href =
+            buildMailto(
+                `Cheerful PRO Membership Request — ${request.id}`,
+                body
+            );
+
+    });
+
+
+/* =========================================================
+   COMMUNITY POLL
+========================================================= */
+
+const pollButtons =
+    document.querySelectorAll(
+        ".poll-option"
+    );
+
+
+let pollVotes =
+    JSON.parse(
+        localStorage.getItem(
+            "cheerful_poll_votes"
+        ) || "{}"
+    );
+
+
+function renderPoll(){
+
+    const total =
+        Object.values(pollVotes)
+            .reduce(
+                (a,b)=>a+b,
+                0
+            );
+
+
+    pollButtons.forEach(button=>{
+
+        const value =
+            pollVotes[
+                button.dataset.poll
+            ] || 0;
+
+
+        const percentage =
+            total
+                ? Math.round(
+                    (value / total) * 100
+                )
+                : 0;
+
+
+        button
+            .querySelector(".poll-bar")
+            .style.width =
+            percentage + "%";
+
 
     });
 
 }
+
+
+pollButtons.forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        const choice =
+            button.dataset.poll;
+
+
+        pollVotes[choice] =
+            (pollVotes[choice] || 0) + 1;
+
+
+        localStorage.setItem(
+            "cheerful_poll_votes",
+            JSON.stringify(pollVotes)
+        );
+
+
+        renderPoll();
+
+    });
+
+});
+
+
+renderPoll();
+
+
+/* =========================================================
+   LIKE BUTTON
+========================================================= */
+
+document
+    .querySelectorAll(".likeBtn")
+    .forEach(button=>{
+
+        button.addEventListener(
+            "click",
+            ()=>{
+
+                const number =
+                    button.querySelector("span");
+
+
+                let count =
+                    Number(
+                        number.textContent
+                    ) + 1;
+
+
+                number.textContent =
+                    count;
+
+
+                button.firstChild
+                    .textContent =
+                    "♥ Like ";
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+const searchable = [
+
+    [
+        "Edit Request",
+        "#edit",
+        "Request an edit from Cheerful."
+    ],
+
+    [
+        "Idea Vault",
+        "#ideas",
+        "Submit creative ideas."
+    ],
+
+    [
+        "Community",
+        "#community",
+        "Join the Cheerful community."
+    ],
+
+    [
+        "PRO Membership",
+        "#pro",
+        "Request Cheerful PRO."
+    ],
+
+    [
+        "Cheerful Lab",
+        "#lab",
+        "Learn editing."
+    ],
+
+    [
+        "Resources",
+        "#resources",
+        "Free creator resources."
+    ],
+
+    [
+        "Content Claims",
+        "#claims",
+        "Create a content claim."
+    ],
+
+    [
+        "Journal",
+        "#journal",
+        "Cheerful updates."
+    ],
+
+    [
+        "YouTube",
+        "https://www.youtube.com/@CheerfulOfficial",
+        "Visit Cheerful on YouTube."
+    ]
+
+];
+
+
+document
+    .getElementById("search")
+    .addEventListener("input",(event)=>{
+
+        const query =
+            event.target.value
+                .trim()
+                .toLowerCase();
+
+
+        const results =
+            document.getElementById(
+                "searchResults"
+            );
+
+
+        if(!query){
+
+            results.innerHTML = "";
+
+            return;
+
+        }
+
+
+        const matches =
+            searchable.filter(item=>
+
+                item[0]
+                    .toLowerCase()
+                    .includes(query)
+
+                ||
+
+                item[2]
+                    .toLowerCase()
+                    .includes(query)
+
+            );
+
+
+        if(!matches.length){
+
+            results.innerHTML = `
+
+                <div style="
+                    color:#666;
+                    text-align:center;
+                    padding:20px;
+                ">
+                    Nothing found.
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        results.innerHTML =
+            matches.map(item=>`
+
+                <a
+                    href="${item[1]}"
+                    ${item[1].startsWith("http")
+                        ? 'target="_blank" rel="noopener noreferrer"'
+                        : ''}
+                    style="
+                        display:block;
+                        padding:15px;
+                        margin-bottom:7px;
+                        border:1px solid var(--line);
+                        background:#111212;
+                        border-radius:15px;
+                    "
+                >
+
+                    <strong>
+                        ${escapeHTML(item[0])}
+                    </strong>
+
+                    <div style="
+                        color:#777;
+                        font-size:.75rem;
+                        margin-top:4px;
+                    ">
+                        ${escapeHTML(item[2])}
+                    </div>
+
+                </a>
+
+            `).join("");
+
+    });
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+document
+    .querySelectorAll(".modal")
+    .forEach(modal=>{
+
+        modal.addEventListener(
+            "click",
+            (event)=>{
+
+                if(
+                    event.target === modal
+                ){
+
+                    modal.classList.remove(
+                        "open"
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer =
+    new IntersectionObserver(
+
+        entries=>{
+
+            entries.forEach(entry=>{
+
+                if(
+                    entry.isIntersecting
+                ){
+
+                    entry.target
+                        .classList
+                        .add("visible");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold:.08
+        }
+
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(element=>{
+
+        observer.observe(element);
+
+    });
 
 </script>
 
