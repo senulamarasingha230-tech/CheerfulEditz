@@ -1,0 +1,2270 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>CHEERFUL — Turning Moments Into Emotions</title>
+
+<meta name="description" content="Cheerful — cinematic edits, creative ideas, editing resources and more.">
+<meta name="theme-color" content="#070707">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root{
+    --bg:#070707;
+    --bg2:#0c0c0c;
+    --surface:rgba(255,255,255,.045);
+    --surface2:rgba(255,255,255,.07);
+    --text:#f5f5f5;
+    --muted:#858585;
+    --dim:#505050;
+    --line:rgba(255,255,255,.09);
+    --accent:#dfff62;
+    --radius:28px;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:"DM Sans",sans-serif;
+    overflow-x:hidden;
+}
+
+::selection{
+    background:var(--accent);
+    color:#000;
+}
+
+button,
+input,
+textarea,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+/* BACKGROUND */
+
+.background{
+    position:fixed;
+    inset:0;
+    z-index:-10;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 15% 15%,rgba(223,255,98,.055),transparent 30%),
+        radial-gradient(circle at 85% 80%,rgba(255,255,255,.035),transparent 30%),
+        var(--bg);
+}
+
+.orb{
+    position:absolute;
+    width:520px;
+    height:520px;
+    border-radius:50%;
+    filter:blur(110px);
+    opacity:.12;
+    animation:float 18s ease-in-out infinite;
+}
+
+.orb.one{
+    background:var(--accent);
+    left:-270px;
+    top:-280px;
+}
+
+.orb.two{
+    background:#fff;
+    right:-320px;
+    bottom:-280px;
+    animation-delay:-8s;
+}
+
+@keyframes float{
+    0%,100%{transform:translate(0,0) scale(1)}
+    50%{transform:translate(70px,45px) scale(1.12)}
+}
+
+/* GRAIN */
+
+.grain{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    pointer-events:none;
+    opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* NAV */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:500;
+    height:76px;
+    padding:0 5vw;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid rgba(255,255,255,.05);
+    background:rgba(7,7,7,.56);
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+}
+
+.logo{
+    color:#fff;
+    text-decoration:none;
+    font-family:"Space Grotesk",sans-serif;
+    font-weight:700;
+    font-size:20px;
+    letter-spacing:-.07em;
+}
+
+.logo span{
+    color:var(--accent);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.nav-links a{
+    color:#858585;
+    text-decoration:none;
+    font-size:13px;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:#fff;
+}
+
+.nav-pill{
+    background:var(--accent);
+    color:#000!important;
+    padding:11px 17px;
+    border-radius:100px;
+    font-weight:700;
+}
+
+.menu{
+    display:none;
+    border:0;
+    background:none;
+    color:#fff;
+    font-size:24px;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    padding:150px 6vw 100px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    position:relative;
+}
+
+.eyebrow{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:var(--accent);
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.2em;
+    font-weight:700;
+    margin-bottom:30px;
+}
+
+.eyebrow::before{
+    content:"";
+    width:32px;
+    height:1px;
+    background:var(--accent);
+}
+
+.hero h1{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(82px,17vw,245px);
+    line-height:.76;
+    letter-spacing:-.1em;
+    font-weight:700;
+}
+
+.hero h1 span{
+    color:var(--accent);
+}
+
+.hero-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:40px;
+    margin-top:70px;
+}
+
+.hero-copy{
+    font-size:clamp(21px,2.6vw,34px);
+    line-height:1.12;
+    letter-spacing:-.04em;
+    max-width:650px;
+}
+
+.hero-copy strong{
+    color:#fff;
+}
+
+.hero-note{
+    max-width:270px;
+    color:#666;
+    font-size:12px;
+    line-height:1.7;
+}
+
+.scroll-hint{
+    position:absolute;
+    left:6vw;
+    bottom:35px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:#555;
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:.18em;
+}
+
+.scroll-line{
+    width:45px;
+    height:1px;
+    background:#444;
+}
+
+/* MARQUEE */
+
+.marquee{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:23px 0;
+}
+
+.marquee-track{
+    display:inline-flex;
+    gap:28px;
+    animation:marquee 26s linear infinite;
+}
+
+.marquee span{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(34px,5vw,72px);
+    letter-spacing:-.06em;
+    font-weight:600;
+}
+
+.marquee .star{
+    color:var(--accent);
+}
+
+@keyframes marquee{
+    to{transform:translateX(-50%)}
+}
+
+/* SECTIONS */
+
+section{
+    padding:140px 6vw;
+}
+
+.section-label{
+    color:var(--accent);
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.2em;
+    font-weight:700;
+    margin-bottom:30px;
+}
+
+.section-title{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(50px,8vw,120px);
+    line-height:.88;
+    letter-spacing:-.08em;
+}
+
+/* ABOUT */
+
+.about-grid{
+    margin-top:75px;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:90px;
+}
+
+.about-main{
+    font-size:clamp(25px,3.2vw,46px);
+    line-height:1.08;
+    letter-spacing:-.045em;
+}
+
+.about-main span{
+    color:#555;
+}
+
+.about-side{
+    color:#777;
+    border-left:1px solid var(--line);
+    padding-left:35px;
+    line-height:1.8;
+    max-width:470px;
+}
+
+.about-side strong{
+    color:#fff;
+}
+
+/* FEATURE CARDS */
+
+.feature-grid{
+    margin-top:70px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.feature-card{
+    position:relative;
+    min-height:330px;
+    padding:32px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:
+        linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.018));
+    overflow:hidden;
+    transition:
+        transform .4s cubic-bezier(.2,.8,.2,1),
+        border-color .3s;
+}
+
+.feature-card:hover{
+    border-color:rgba(223,255,98,.28);
+    transform:translateY(-7px);
+}
+
+.feature-number{
+    color:#555;
+    font-size:11px;
+}
+
+.feature-icon{
+    font-size:32px;
+    margin-top:45px;
+}
+
+.feature-card h3{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(30px,4vw,50px);
+    letter-spacing:-.07em;
+    margin-top:20px;
+}
+
+.feature-card p{
+    color:#777;
+    font-size:13px;
+    line-height:1.65;
+    max-width:420px;
+    margin-top:12px;
+}
+
+.feature-arrow{
+    position:absolute;
+    right:28px;
+    bottom:27px;
+    color:#555;
+    font-size:22px;
+    transition:.3s;
+}
+
+.feature-card:hover .feature-arrow{
+    color:var(--accent);
+    transform:translate(4px,-4px);
+}
+
+/* STATEMENT */
+
+.statement{
+    min-height:80vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.statement h2{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(70px,14vw,210px);
+    line-height:.76;
+    letter-spacing:-.1em;
+}
+
+.statement h2 span{
+    display:block;
+}
+
+.statement .accent{
+    color:var(--accent);
+}
+
+/* PROCESS */
+
+.process{
+    border-top:1px solid var(--line);
+}
+
+.process-list{
+    margin-top:65px;
+}
+
+.process-row{
+    display:grid;
+    grid-template-columns:70px 1fr 1fr;
+    gap:30px;
+    align-items:center;
+    padding:38px 0;
+    border-bottom:1px solid var(--line);
+}
+
+.process-num{
+    color:#555;
+    font-size:11px;
+}
+
+.process-name{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(30px,4vw,55px);
+    letter-spacing:-.06em;
+}
+
+.process-description{
+    color:#777;
+    font-size:13px;
+    line-height:1.7;
+    max-width:420px;
+}
+
+/* CLAIM SECTION */
+
+.claim-section{
+    padding-top:100px;
+}
+
+.claim-container{
+    margin-top:70px;
+    border:1px solid var(--line);
+    border-radius:35px;
+    padding:clamp(30px,6vw,75px);
+    background:
+        radial-gradient(circle at 90% 0%,rgba(223,255,98,.08),transparent 32%),
+        linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
+}
+
+.claim-intro{
+    max-width:720px;
+}
+
+.claim-intro h3{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(42px,6vw,80px);
+    line-height:.9;
+    letter-spacing:-.075em;
+}
+
+.claim-intro h3 span{
+    color:var(--accent);
+}
+
+.claim-intro p{
+    color:#777;
+    line-height:1.7;
+    max-width:600px;
+    margin-top:25px;
+}
+
+.claim-layout{
+    margin-top:60px;
+    display:grid;
+    grid-template-columns:1.4fr .6fr;
+    gap:60px;
+}
+
+.form{
+    display:flex;
+    flex-direction:column;
+    gap:17px;
+}
+
+.field{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.field label{
+    color:#777;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.15em;
+}
+
+.field input,
+.field textarea,
+.field select{
+    width:100%;
+    border:1px solid var(--line);
+    outline:none;
+    color:#fff;
+    background:rgba(255,255,255,.035);
+    border-radius:14px;
+    padding:15px 16px;
+    transition:.25s;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+    border-color:rgba(223,255,98,.55);
+    background:rgba(255,255,255,.055);
+}
+
+.field textarea{
+    min-height:130px;
+    resize:vertical;
+}
+
+.field select{
+    appearance:none;
+}
+
+.check{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    color:#777;
+    font-size:11px;
+    line-height:1.5;
+    margin-top:4px;
+}
+
+.check input{
+    margin-top:3px;
+    accent-color:var(--accent);
+}
+
+.primary-btn{
+    border:0;
+    background:var(--accent);
+    color:#000;
+    border-radius:100px;
+    padding:16px 23px;
+    font-size:12px;
+    font-weight:700;
+    width:max-content;
+    transition:.3s;
+}
+
+.primary-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 35px rgba(223,255,98,.14);
+}
+
+.claim-info{
+    border-left:1px solid var(--line);
+    padding-left:35px;
+}
+
+.claim-info h4{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:24px;
+    letter-spacing:-.04em;
+}
+
+.claim-info p{
+    color:#666;
+    font-size:12px;
+    line-height:1.7;
+    margin-top:15px;
+}
+
+.claim-steps{
+    margin-top:35px;
+}
+
+.claim-step{
+    display:flex;
+    gap:15px;
+    padding:15px 0;
+    border-bottom:1px solid var(--line);
+}
+
+.claim-step b{
+    color:var(--accent);
+    font-size:10px;
+}
+
+.claim-step span{
+    color:#777;
+    font-size:11px;
+}
+
+/* CLAIM RESULT */
+
+.claim-result{
+    display:none;
+    margin-top:45px;
+    padding:30px;
+    border:1px solid rgba(223,255,98,.2);
+    border-radius:22px;
+    background:rgba(223,255,98,.035);
+}
+
+.claim-result.show{
+    display:block;
+    animation:appear .5s ease;
+}
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.result-label{
+    color:var(--accent);
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.15em;
+    font-weight:700;
+}
+
+.claim-id{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(30px,5vw,55px);
+    letter-spacing:.03em;
+    margin-top:10px;
+    word-break:break-all;
+}
+
+.result-note{
+    color:#777;
+    font-size:12px;
+    line-height:1.7;
+    margin-top:10px;
+}
+
+.result-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:25px;
+}
+
+.secondary-btn{
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.045);
+    color:#fff;
+    border-radius:100px;
+    padding:13px 18px;
+    font-size:11px;
+    text-decoration:none;
+    transition:.25s;
+}
+
+.secondary-btn:hover{
+    border-color:rgba(223,255,98,.3);
+}
+
+/* HISTORY */
+
+.history{
+    margin-top:60px;
+    border-top:1px solid var(--line);
+    padding-top:40px;
+}
+
+.history-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.history-title{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:30px;
+    letter-spacing:-.06em;
+}
+
+.clear-history{
+    border:0;
+    background:none;
+    color:#555;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+}
+
+.clear-history:hover{
+    color:#fff;
+}
+
+.history-list{
+    margin-top:20px;
+}
+
+.history-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+}
+
+.history-id{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:17px;
+}
+
+.history-date{
+    color:#555;
+    font-size:10px;
+    margin-top:5px;
+}
+
+.history-status{
+    color:var(--accent);
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+}
+
+.empty-history{
+    color:#555;
+    font-size:12px;
+    padding:25px 0;
+}
+
+/* EMAIL */
+
+.email-area{
+    margin-top:55px;
+    padding-top:35px;
+    border-top:1px solid var(--line);
+}
+
+.email-area p{
+    color:#666;
+    font-size:12px;
+    line-height:1.7;
+}
+
+.email-link{
+    display:inline-block;
+    margin-top:13px;
+    color:#fff;
+    text-decoration:none;
+    font-family:"Space Grotesk",sans-serif;
+    font-size:20px;
+    letter-spacing:-.03em;
+}
+
+.email-link:hover{
+    color:var(--accent);
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid var(--line);
+    padding:30px 6vw;
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    color:#555;
+    font-size:10px;
+}
+
+footer strong{
+    color:#999;
+}
+
+/* REVEAL */
+
+.reveal{
+    opacity:0;
+    transform:translateY(30px);
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:none;
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    left:50%;
+    bottom:30px;
+    transform:translate(-50%,20px);
+    opacity:0;
+    pointer-events:none;
+    z-index:2000;
+    background:#fff;
+    color:#000;
+    padding:13px 19px;
+    border-radius:100px;
+    font-size:11px;
+    font-weight:700;
+    transition:.3s;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translate(-50%,0);
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    nav{
+        height:68px;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .nav-links{
+        position:fixed;
+        top:78px;
+        left:15px;
+        right:15px;
+        padding:18px;
+        border:1px solid var(--line);
+        border-radius:22px;
+        background:rgba(9,9,9,.95);
+        backdrop-filter:blur(20px);
+        flex-direction:column;
+        align-items:stretch;
+        gap:4px;
+        opacity:0;
+        pointer-events:none;
+        transform:translateY(-15px);
+        transition:.3s;
+    }
+
+    .nav-links.open{
+        opacity:1;
+        pointer-events:auto;
+        transform:none;
+    }
+
+    .nav-links a{
+        padding:14px;
+    }
+
+    .nav-pill{
+        text-align:center;
+    }
+
+    .hero{
+        padding:135px 5vw 90px;
+    }
+
+    .hero h1{
+        font-size:24vw;
+    }
+
+    .hero-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+        margin-top:50px;
+    }
+
+    .hero-copy{
+        font-size:24px;
+    }
+
+    .scroll-hint{
+        display:none;
+    }
+
+    section{
+        padding:95px 5vw;
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+        gap:45px;
+        margin-top:50px;
+    }
+
+    .about-side{
+        border-left:0;
+        border-top:1px solid var(--line);
+        padding-left:0;
+        padding-top:30px;
+    }
+
+    .feature-grid{
+        grid-template-columns:1fr;
+    }
+
+    .statement{
+        min-height:60vh;
+    }
+
+    .statement h2{
+        font-size:22vw;
+    }
+
+    .process-row{
+        grid-template-columns:40px 1fr;
+        gap:12px;
+    }
+
+    .process-description{
+        grid-column:2;
+    }
+
+    .claim-layout{
+        grid-template-columns:1fr;
+        gap:45px;
+    }
+
+    .claim-info{
+        border-left:0;
+        border-top:1px solid var(--line);
+        padding-left:0;
+        padding-top:35px;
+    }
+
+    .history-item{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    footer{
+        flex-direction:column;
+    }
+}
+
+/* REDUCED MOTION */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms!important;
+        animation-iteration-count:1!important;
+        scroll-behavior:auto!important;
+        transition-duration:.01ms!important;
+    }
+
+    .reveal{
+        opacity:1;
+        transform:none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background">
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+</div>
+
+<div class="grain"></div>
+
+<div class="toast" id="toast"></div>
+
+
+<!-- NAV -->
+<nav>
+
+    <a href="#top" class="logo">
+        CHEER<span>FUL.</span>
+    </a>
+
+    <div class="nav-links" id="navLinks">
+
+        <a href="#about">About</a>
+        <a href="#features">Explore</a>
+        <a href="#process">Process</a>
+        <a href="#claims">Content Claim</a>
+
+        <a
+            href="#"
+            id="youtubeButton"
+            class="nav-pill"
+            style="display:none;"
+            target="_blank"
+            rel="noopener"
+        >
+            YouTube ↗
+        </a>
+
+    </div>
+
+    <button class="menu" id="menuButton" aria-label="Open navigation">
+        ☰
+    </button>
+
+</nav>
+
+
+<main id="top">
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="eyebrow reveal">
+        Independent creative channel
+    </div>
+
+    <h1 class="reveal">
+        CHEER<span>FUL</span>
+    </h1>
+
+    <div class="hero-bottom reveal">
+
+        <div class="hero-copy">
+            <strong>Turning moments into emotions.</strong><br>
+            Edits, ideas, resources and creative things
+            made to make you feel something.
+        </div>
+
+        <div class="hero-note">
+            Cheerful isn't just about making an edit
+            look good. It's about finding the feeling
+            inside a moment — and bringing it to life.
+        </div>
+
+    </div>
+
+    <div class="scroll-hint">
+        <span class="scroll-line"></span>
+        Explore Cheerful
+    </div>
+
+</section>
+
+
+<!-- MARQUEE -->
+
+<div class="marquee">
+
+    <div class="marquee-track">
+
+        <span>EMOTION</span>
+        <span class="star">✦</span>
+
+        <span>CREATIVITY</span>
+        <span class="star">✦</span>
+
+        <span>ENERGY</span>
+        <span class="star">✦</span>
+
+        <span>CHEERFUL</span>
+        <span class="star">✦</span>
+
+        <span>EMOTION</span>
+        <span class="star">✦</span>
+
+        <span>CREATIVITY</span>
+        <span class="star">✦</span>
+
+        <span>ENERGY</span>
+        <span class="star">✦</span>
+
+        <span>CHEERFUL</span>
+        <span class="star">✦</span>
+
+    </div>
+
+</div>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <div class="section-label reveal">
+        01 — About
+    </div>
+
+    <h2 class="section-title reveal">
+        MORE THAN<br>
+        AN EDIT.
+    </h2>
+
+    <div class="about-grid">
+
+        <div class="about-main reveal">
+            We take moments people might scroll past
+            and turn them into something
+            <span>worth stopping for.</span>
+        </div>
+
+        <div class="about-side reveal">
+
+            Cheerful is an independent creative channel
+            built around cinematic editing, emotion,
+            entertainment and experimentation.
+
+            <br><br>
+
+            Sometimes that means an edit.
+
+            Sometimes it's an idea.
+
+            Sometimes it's a resource.
+
+            <br><br>
+
+            Whatever we're making, the goal stays the same:
+
+            <br><br>
+
+            <strong>Make the moment feel bigger.</strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section id="features">
+
+    <div class="section-label reveal">
+        02 — Explore Cheerful
+    </div>
+
+    <h2 class="section-title reveal">
+        THERE'S MORE<br>
+        TO EXPLORE.
+    </h2>
+
+    <div class="feature-grid">
+
+        <article class="feature-card reveal">
+
+            <div class="feature-number">01</div>
+
+            <div class="feature-icon">🎬</div>
+
+            <h3>EDIT REQUEST</h3>
+
+            <p>
+                Have an idea for an edit?
+                Tell Cheerful what you have in mind.
+                This space is built for future edit requests.
+            </p>
+
+            <div class="feature-arrow">↗</div>
+
+        </article>
+
+
+        <article class="feature-card reveal">
+
+            <div class="feature-number">02</div>
+
+            <div class="feature-icon">💡</div>
+
+            <h3>SUGGEST</h3>
+
+            <p>
+                Got an idea for what Cheerful should
+                edit next? Send the idea and help shape
+                what's coming next.
+            </p>
+
+            <div class="feature-arrow">↗</div>
+
+        </article>
+
+
+        <article class="feature-card reveal">
+
+            <div class="feature-number">03</div>
+
+            <div class="feature-icon">📚</div>
+
+            <h3>CHEERFUL LAB</h3>
+
+            <p>
+                Editing tips, experiments, guides and
+                things learned while creating.
+                A creative space that's always growing.
+            </p>
+
+            <div class="feature-arrow">↗</div>
+
+        </article>
+
+
+        <article class="feature-card reveal">
+
+            <div class="feature-number">04</div>
+
+            <div class="feature-icon">🎁</div>
+
+            <h3>RESOURCES</h3>
+
+            <p>
+                Future presets, overlays, sounds,
+                wallpapers and other useful creative
+                resources made available by Cheerful.
+            </p>
+
+            <div class="feature-arrow">↗</div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- STATEMENT -->
+
+<section class="statement">
+
+    <h2 class="reveal">
+
+        <span>DON'T</span>
+        <span>JUST</span>
+        <span class="accent">WATCH.</span>
+        <span>FEEL.</span>
+
+    </h2>
+
+</section>
+
+
+<!-- PROCESS -->
+
+<section id="process" class="process">
+
+    <div class="section-label reveal">
+        03 — The Philosophy
+    </div>
+
+    <h2 class="section-title reveal">
+        FIND.<br>
+        FEEL.<br>
+        CREATE.
+    </h2>
+
+    <div class="process-list">
+
+        <div class="process-row reveal">
+
+            <div class="process-num">01</div>
+
+            <div class="process-name">FIND</div>
+
+            <div class="process-description">
+                Find the moment that has something worth saying.
+                Sometimes it's obvious. Sometimes it's hidden.
+            </div>
+
+        </div>
+
+
+        <div class="process-row reveal">
+
+            <div class="process-num">02</div>
+
+            <div class="process-name">FEEL</div>
+
+            <div class="process-description">
+                Understand what makes the moment work —
+                emotion, energy, tension, humour or story.
+            </div>
+
+        </div>
+
+
+        <div class="process-row reveal">
+
+            <div class="process-num">03</div>
+
+            <div class="process-name">CREATE</div>
+
+            <div class="process-description">
+                Build around that feeling with rhythm,
+                sound, movement, effects and timing.
+            </div>
+
+        </div>
+
+
+        <div class="process-row reveal">
+
+            <div class="process-num">04</div>
+
+            <div class="process-name">SHARE</div>
+
+            <div class="process-description">
+                Put it into the world and let the moment
+                become someone else's memory.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTENT CLAIM -->
+
+<section id="claims" class="claim-section">
+
+    <div class="section-label reveal">
+        04 — Content Claims
+    </div>
+
+    <h2 class="section-title reveal">
+        YOUR CONTENT.<br>
+        YOUR CLAIM.
+    </h2>
+
+
+    <div class="claim-container reveal">
+
+        <div class="claim-intro">
+
+            <h3>
+                DO YOU OWN ANY OF <span>THIS CONTENT?</span>
+            </h3>
+
+            <p>
+                If your content appears in a Cheerful edit
+                and you believe you own or represent the
+                rights to that content, you can create a
+                Content Claim ID here.
+            </p>
+
+            <p>
+                Provide the relevant information and
+                supporting proof. Once your claim is created,
+                you'll receive a unique ID that you can
+                include when contacting Cheerful by email.
+            </p>
+
+        </div>
+
+
+        <div class="claim-layout">
+
+            <!-- FORM -->
+
+            <form class="form" id="claimForm">
+
+                <div class="field">
+
+                    <label for="claimName">
+                        Your name
+                    </label>
+
+                    <input
+                        id="claimName"
+                        type="text"
+                        required
+                        placeholder="Your name"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="claimEmail">
+                        Your email
+                    </label>
+
+                    <input
+                        id="claimEmail"
+                        type="email"
+                        required
+                        placeholder="you@example.com"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="videoUrl">
+                        Cheerful video URL
+                    </label>
+
+                    <input
+                        id="videoUrl"
+                        type="url"
+                        required
+                        placeholder="https://youtube.com/..."
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="originalUrl">
+                        Original / relevant content URL
+                    </label>
+
+                    <input
+                        id="originalUrl"
+                        type="url"
+                        required
+                        placeholder="https://..."
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="claimReason">
+                        Reason for your claim
+                    </label>
+
+                    <textarea
+                        id="claimReason"
+                        required
+                        placeholder="Tell us why you believe you own or represent the content."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="proof">
+                        Proof / supporting information
+                    </label>
+
+                    <textarea
+                        id="proof"
+                        required
+                        placeholder="Provide links or information that supports your claim."
+                    ></textarea>
+
+                </div>
+
+
+                <label class="check">
+
+                    <input
+                        type="checkbox"
+                        id="accuracy"
+                        required
+                    >
+
+                    <span>
+                        I confirm that the information I provide
+                        is accurate and relevant to my claim.
+                    </span>
+
+                </label>
+
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    CREATE CONTENT CLAIM ID →
+                </button>
+
+            </form>
+
+
+            <!-- INFO -->
+
+            <aside class="claim-info">
+
+                <h4>
+                    HOW IT WORKS
+                </h4>
+
+                <p>
+                    Creating an ID doesn't automatically
+                    remove content. It identifies your
+                    request so it can be communicated
+                    clearly through email.
+                </p>
+
+                <div class="claim-steps">
+
+                    <div class="claim-step">
+                        <b>01</b>
+                        <span>Fill in your claim.</span>
+                    </div>
+
+                    <div class="claim-step">
+                        <b>02</b>
+                        <span>Provide supporting proof.</span>
+                    </div>
+
+                    <div class="claim-step">
+                        <b>03</b>
+                        <span>Receive your unique ID.</span>
+                    </div>
+
+                    <div class="claim-step">
+                        <b>04</b>
+                        <span>Email Cheerful with your ID.</span>
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div class="claim-result" id="claimResult">
+
+            <div class="result-label">
+                Claim created successfully
+            </div>
+
+            <div
+                class="claim-id"
+                id="generatedId"
+            ></div>
+
+            <div class="result-note">
+                Save this ID. To complete your request,
+                email Cheerful and include this Content
+                Claim ID along with the relevant information.
+            </div>
+
+            <div class="result-buttons">
+
+                <button
+                    class="primary-btn"
+                    id="copyId"
+                    type="button"
+                >
+                    COPY ID
+                </button>
+
+                <a
+                    class="secondary-btn"
+                    id="emailClaim"
+                    href="#"
+                >
+                    EMAIL CHEERFUL →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- HISTORY -->
+
+        <div class="history">
+
+            <div class="history-head">
+
+                <div class="history-title">
+                    MY CLAIM HISTORY
+                </div>
+
+                <button
+                    class="clear-history"
+                    id="clearHistory"
+                    type="button"
+                >
+                    Clear history
+                </button>
+
+            </div>
+
+            <div
+                class="history-list"
+                id="historyList"
+            ></div>
+
+        </div>
+
+
+        <!-- DIRECT EMAIL -->
+
+        <div class="email-area">
+
+            <p>
+                Prefer to contact Cheerful directly?
+                You can also email:
+            </p>
+
+            <a
+                class="email-link"
+                href="mailto:senulamarasingha230@gmail.com"
+            >
+                senulamarasingha230@gmail.com ↗
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div>
+        © <span id="year"></span>
+        <strong>CHEERFUL</strong>
+    </div>
+
+    <div>
+        Turning moments into emotions.
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   CHEERFUL CONFIG
+   Change these later when you have the real links.
+   ========================================================= */
+
+const CONFIG = {
+
+    youtube: "",
+
+    email: "senulamarasingha230@gmail.com"
+
+};
+
+
+/* YEAR */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+/* YOUTUBE */
+
+const youtubeButton =
+    document.getElementById("youtubeButton");
+
+if(CONFIG.youtube.trim() !== ""){
+
+    youtubeButton.href = CONFIG.youtube;
+    youtubeButton.style.display = "block";
+
+}
+
+
+/* MOBILE NAV */
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const navLinks =
+    document.getElementById("navLinks");
+
+menuButton.addEventListener("click",()=>{
+
+    navLinks.classList.toggle("open");
+
+    menuButton.textContent =
+        navLinks.classList.contains("open")
+        ? "×"
+        : "☰";
+
+});
+
+
+document.querySelectorAll(".nav-links a")
+.forEach(link=>{
+
+    link.addEventListener("click",()=>{
+
+        navLinks.classList.remove("open");
+        menuButton.textContent = "☰";
+
+    });
+
+});
+
+
+/* SCROLL REVEAL */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+const observer =
+    new IntersectionObserver(
+
+        entries=>{
+
+            entries.forEach(entry=>{
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add("visible");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold:.12
+        }
+
+    );
+
+
+revealElements.forEach(el=>{
+    observer.observe(el);
+});
+
+
+/* FEATURE CARD TILT */
+
+if(
+    !window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches
+){
+
+    document
+    .querySelectorAll(".feature-card")
+    .forEach(card=>{
+
+        card.addEventListener("mousemove",event=>{
+
+            const rect =
+                card.getBoundingClientRect();
+
+            const x =
+                event.clientX - rect.left;
+
+            const y =
+                event.clientY - rect.top;
+
+            const rotateX =
+                ((y / rect.height)-.5) * -4;
+
+            const rotateY =
+                ((x / rect.width)-.5) * 4;
+
+            card.style.transform =
+                `perspective(900px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-7px)`;
+
+        });
+
+        card.addEventListener("mouseleave",()=>{
+
+            card.style.transform = "";
+
+        });
+
+    });
+
+}
+
+
+/* TOAST */
+
+function showToast(message){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    clearTimeout(window.toastTimer);
+
+    window.toastTimer =
+        setTimeout(()=>{
+
+            toast.classList.remove("show");
+
+        },2500);
+
+}
+
+
+/* =========================================================
+   CONTENT CLAIM SYSTEM
+   ========================================================= */
+
+const claimForm =
+    document.getElementById("claimForm");
+
+const claimResult =
+    document.getElementById("claimResult");
+
+const generatedId =
+    document.getElementById("generatedId");
+
+const emailClaim =
+    document.getElementById("emailClaim");
+
+const copyId =
+    document.getElementById("copyId");
+
+const historyList =
+    document.getElementById("historyList");
+
+const clearHistory =
+    document.getElementById("clearHistory");
+
+
+/* STORAGE KEY */
+
+const STORAGE_KEY =
+    "cheerful_content_claim_history_v1";
+
+
+/* RANDOM ID */
+
+function randomPart(length){
+
+    const chars =
+        "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+    let result = "";
+
+    for(let i=0;i<length;i++){
+
+        result +=
+            chars[
+                Math.floor(
+                    Math.random()*chars.length
+                )
+            ];
+
+    }
+
+    return result;
+
+}
+
+
+function createClaimId(){
+
+    return `CR-${randomPart(4)}-${randomPart(4)}`;
+
+}
+
+
+/* LOAD HISTORY */
+
+function getHistory(){
+
+    try{
+
+        return JSON.parse(
+            localStorage.getItem(STORAGE_KEY)
+        ) || [];
+
+    }catch(error){
+
+        return [];
+
+    }
+
+}
+
+
+/* SAVE HISTORY */
+
+function saveHistory(history){
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(history)
+    );
+
+}
+
+
+/* RENDER HISTORY */
+
+function renderHistory(){
+
+    const history =
+        getHistory();
+
+    historyList.innerHTML = "";
+
+    if(history.length === 0){
+
+        historyList.innerHTML = `
+            <div class="empty-history">
+                No Content Claim requests have been created
+                on this device yet.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    history
+    .slice()
+    .reverse()
+    .forEach(claim=>{
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+            "history-item";
+
+        item.innerHTML = `
+
+            <div>
+
+                <div class="history-id">
+                    ${escapeHTML(claim.id)}
+                </div>
+
+                <div class="history-date">
+                    ${escapeHTML(claim.date)}
+                </div>
+
+            </div>
+
+            <div class="history-status">
+                EMAIL REQUIRED
+            </div>
+
+        `;
+
+        historyList.appendChild(item);
+
+    });
+
+}
+
+
+/* BASIC HTML ESCAPING */
+
+function escapeHTML(value){
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* BUILD EMAIL */
+
+function buildEmail(claim){
+
+    const subject =
+        `Content Claim Request — ${claim.id}`;
+
+    const body =
+`Hello Cheerful,
+
+I am contacting you regarding a Content Claim request.
+
+Content Claim ID:
+${claim.id}
+
+Name:
+${claim.name}
+
+Email:
+${claim.email}
+
+Cheerful video URL:
+${claim.videoUrl}
+
+Original / relevant content URL:
+${claim.originalUrl}
+
+Reason for claim:
+${claim.reason}
+
+Proof / supporting information:
+${claim.proof}
+
+Thank you.`;
+
+
+    return `mailto:${encodeURIComponent(CONFIG.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+}
+
+
+/* SUBMIT CLAIM */
+
+claimForm.addEventListener("submit",event=>{
+
+    event.preventDefault();
+
+
+    const claim = {
+
+        id:createClaimId(),
+
+        name:
+            document.getElementById("claimName").value.trim(),
+
+        email:
+            document.getElementById("claimEmail").value.trim(),
+
+        videoUrl:
+            document.getElementById("videoUrl").value.trim(),
+
+        originalUrl:
+            document.getElementById("originalUrl").value.trim(),
+
+        reason:
+            document.getElementById("claimReason").value.trim(),
+
+        proof:
+            document.getElementById("proof").value.trim(),
+
+        date:
+            new Date().toLocaleString(
+                undefined,
+                {
+                    dateStyle:"medium",
+                    timeStyle:"short"
+                }
+            )
+
+    };
+
+
+    /* SAVE */
+
+    const history =
+        getHistory();
+
+    history.push(claim);
+
+    saveHistory(history);
+
+    renderHistory();
+
+
+    /* DISPLAY RESULT */
+
+    generatedId.textContent =
+        claim.id;
+
+    emailClaim.href =
+        buildEmail(claim);
+
+    claimResult.classList.add("show");
+
+
+    /* SCROLL RESULT */
+
+    setTimeout(()=>{
+
+        claimResult.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+    },100);
+
+
+    showToast("Content Claim ID created.");
+
+});
+
+
+/* COPY ID */
+
+copyId.addEventListener("click",async()=>{
+
+    const id =
+        generatedId.textContent;
+
+    if(!id) return;
+
+    try{
+
+        await navigator.clipboard.writeText(id);
+
+        showToast("Claim ID copied.");
+
+    }catch(error){
+
+        showToast("Copy failed — select the ID manually.");
+
+    }
+
+});
+
+
+/* CLEAR HISTORY */
+
+clearHistory.addEventListener("click",()=>{
+
+    const history =
+        getHistory();
+
+    if(history.length === 0){
+
+        showToast("There is no history to clear.");
+
+        return;
+
+    }
+
+
+    const confirmed =
+        confirm(
+            "Clear all Content Claim history from this device?"
+        );
+
+
+    if(!confirmed) return;
+
+
+    localStorage.removeItem(STORAGE_KEY);
+
+    renderHistory();
+
+    showToast("Claim history cleared.");
+
+});
+
+
+/* INITIAL HISTORY */
+
+renderHistory();
+
+
+/* =========================================================
+   MAGNETIC BUTTONS
+   ========================================================= */
+
+if(
+    !window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches
+){
+
+    document
+    .querySelectorAll(".primary-btn,.nav-pill")
+    .forEach(button=>{
+
+        button.addEventListener("mousemove",event=>{
+
+            const rect =
+                button.getBoundingClientRect();
+
+            const x =
+                event.clientX -
+                rect.left -
+                rect.width/2;
+
+            const y =
+                event.clientY -
+                rect.top -
+                rect.height/2;
+
+            button.style.transform =
+                `translate(${x*.1}px,${y*.1}px)`;
+
+        });
+
+        button.addEventListener("mouseleave",()=>{
+
+            button.style.transform = "";
+
+        });
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
+```
